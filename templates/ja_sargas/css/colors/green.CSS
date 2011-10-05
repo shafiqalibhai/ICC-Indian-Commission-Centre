@@ -1,0 +1,114 @@
+body#bd {
+	background: url(../../images/green/body-bg.gif) repeat-x top #FFFFFF;
+}
+
+#ja-headerwrap {
+	background: url(../../images/green/header-bg.jpg) no-repeat top left;
+}
+
+#ja-usertools div.search {
+	background: url(../../images/green/icon-search.gif) no-repeat center left;
+}
+
+#ja-usertools .inputbox {
+	border-color: #83B92B;
+	background: #D6EAB5;
+}
+
+/* Split Menu
+----------------------------------------------------------- */
+#ja-splitmenu a:hover,
+#ja-splitmenu a:active,
+#ja-splitmenu a:focus {
+	background: url(../../images/green/mainnav-on-bg.gif) no-repeat bottom center #BBDE82!important;
+}
+
+#ja-splitmenu li.active_menu a,
+#ja-splitmenu li.active_menu a:hover,
+#ja-splitmenu li.active_menu a:active,
+#ja-splitmenu li.active_menu a:focus {
+	background: url(../../images/green/mainnav-on-bg.gif) no-repeat bottom center #E9A853!important;
+}
+
+/* Son of Suckerfish Dropdowns
+--------------------------------------------------------- */
+#ja-cssmenu li ul {
+	border-color: #B0CB86!important;
+	background: url(../../ja_cssmenu/img/child-bg-green.gif) top #A7C478!important;
+}
+
+#ja-cssmenu li a:hover {
+	background: #A7C478!important;
+}
+
+#ja-cssmenu li a.active {
+	background: #E9A853!important;
+}
+
+#ja-cssmenu li li a.active {
+	background: url(../../ja_cssmenu/img/childactive-bg-green.gif) no-repeat top left!important;
+}
+
+#ja-cssmenu li:hover,
+#ja-cssmenu li.sfhover {
+	background: #A7C478!important;
+}
+
+#ja-cssmenu li li a:hover,
+#ja-cssmenu ul li:hover, #ja-cssmenu ul ul li:hover,
+#ja-cssmenu ul li.sfhover, #ja-cssmenu ul ul li.sfhover {
+	background: url(../../ja_cssmenu/img/childhover-bg-green.gif) #E9A853!important;
+}
+
+/* TransMenu
+-------------------------------------------------*/
+.transMenu .background {
+	background-color: #9DB871!important;
+}
+
+.transMenu .item.hover {
+	background: #9DB871!important;
+}
+
+.transMenu .item#active, .transMenu .item#active:hover {
+	background: #E9A853!important;
+}
+
+a.havechild-mainlevel-active-trans,
+a.havechild-mainlevel-active-trans:active {
+	background: #E9A853!important;
+}
+
+a.jahover {
+	background: #A7C478!important;
+}
+
+a.jahover-active {
+	background: #E9A853!important;
+}
+
+a.mainlevel-trans:hover,
+a.mainlevel-trans:active {
+	background: #A7C478!important;
+}
+
+a.mainlevel-active-trans,
+a.mainlevel-active-trans:hover,
+a.mainlevel-active-trans:active {
+	background: #E9A853!important;
+}
+
+/* Script Dropline Menu
+--------------------------------------------------------- */
+#jasdl-mainnav a:hover, #jasdl-mainnav ul li.hover a {
+	background: url(../../images/green/mainnav-on-bg.gif) no-repeat bottom center #BBDE82!important;
+}
+
+#jasdl-mainnav li.active a,
+#jasdl-mainnav li.active a:hover,
+#jasdl-mainnav li.active a:active,
+#jasdl-mainnav li.active a:focus {
+	background: url(../../images/green/mainnav-on-bg.gif) no-repeat bottom center #E9A853!important;
+}
+
+

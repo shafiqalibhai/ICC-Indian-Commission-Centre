@@ -1,0 +1,1670 @@
+<html><head><script language="JavaScript">
+//<!--
+
+var message="Developed and Maintaned \n\tby\n\ NIC, MEA Division, New Delhi";
+
+function clickIE4(){
+if (event.button==2){
+alert(message);
+return false;
+}
+}
+function allotmess(myvar,time)
+{
+alert('After filling this form, you will have to submit the print out of the application along with necessary documents at the Passport Office. The first available appointment for receiving the application at the Passport Office is on : '+myvar+' : '+time+'');
+}
+function clickNS4(e){
+if (document.layers||document.getElementById&&!document.all){
+if (e.which==2||e.which==3){
+alert(message);
+return false;
+}
+}
+}
+
+if (document.layers){
+document.captureEvents(Event.MOUSEDOWN);
+document.onmousedown=clickNS4;
+}
+else if (document.all&&!document.getElementById){
+document.onmousedown=clickIE4;
+}
+
+document.oncontextmenu=new Function("alert(message);return false")
+
+
+// --> 
+</script>
+
+
+
+
+
+
+
+
+
+
+<title>Online Passport Registration Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script language="javascript" src="OnlineRegistration.jsp_files/validate.js"></script>
+<script language="javascript" src="OnlineRegistration.jsp_files/date_diff.js"></script>
+<script type="text/javascript" src="OnlineRegistration.jsp_files/tooltip.js">
+</script>
+
+<script language="javascript">
+
+function isValidAgent(str,str1)	{
+	var tmp = 0.0;
+	var tmp1 = 0.0;
+	if (str.length < 4) { return true;}
+	if (str.substring(0,3).toUpperCase()!= str1){return true;}
+	for (var i = 0; i < 3; i++) {
+		 tmp = str.charCodeAt(i); // get numeric value
+		if(tmp=0 || (tmp >1 && tmp<65) ||  (tmp>90 && tmp<97) || tmp>122) {return true;}
+	} 
+	for(i=3;i<7;i++)   //check for digits
+	{ tmp1 = str.charCodeAt(i);
+		//if(str[i]>='0'&&str[i]<='9' ) {return true; }
+		if ((tmp1 >0 && tmp1<48) || tmp1>57) {return true;}
+    }
+}
+
+function isEmpty(str)
+{
+	if(str=="")
+	return true;
+}
+
+function fullname1(str)
+{   var temp=new Array();
+ 	temp=str.split(' ');
+	//document.write(temp[0]);
+	 var firstname=temp[0];
+	 var middlename=temp[1];
+	// document.write(temp[1]);
+	 var k=firstname.length;
+	 if(middlename!=null)
+	{
+	 
+if(firstname=='MR' || firstname=='MRS' || firstname=='SMT'|| firstname=='DR'|| firstname=='MISS' || firstname=='mr' || firstname=='mrs' || firstname=='smt'|| firstname=='dr'|| firstname=='miss' || firstname=='ms' || firstname=='MS'){	
+	return true;
+	}}
+}
+
+function fullname(str)
+{   var temp=new Array();
+ 	temp=str.split(' ');
+	//document.write(temp[0]);
+	 var firstname=temp[0];
+	 var middlename=temp[1];
+	// document.write(temp[1]);
+	 var k=firstname.length;
+	 if(middlename!=null)
+	{
+	 if(firstname.length==1 || middlename.length==1) 
+	{
+	return true;
+	}
+}
+}
+
+function isNumeric(str)      //for non-numeric fields
+{
+	var FlagS=0, FlagN=0;
+	var str1=new Array();	
+
+	for(var i=0;i<str.length;i++) //convert string to a char array
+	{
+		str1[i]=str.charAt(i);
+	}	
+
+	for(i=0;i<str1.length;i++)   //check for digits
+	{
+		if(str1[i]>='0'&&str1[i]<='9' ) {
+			FlagN=1;
+		}
+	}
+	if(FlagS==1||FlagN==1) { //give a final decision
+		FlagS=FlagN=0;
+		return true;
+	}	
+}
+
+function isValid(str)	{
+	var tmp = 0.0;
+	for (var i = 0; i < str.length; i++) {
+		 tmp = str.charCodeAt(i); // get numeric value
+		if(tmp<32 || (tmp >32 && tmp<65) || (tmp>90 && tmp<97) || tmp>122) {
+			return true;
+		}
+	} 
+}
+
+function isValidStartTime(str)	{
+	
+if(str.length>4)
+	{
+if(((str.charCodeAt(0)==48) || (str.charCodeAt(0)==49))
+&&((str.charCodeAt(1)>47) && (str.charCodeAt(1) <58  ))
+&&((str.charCodeAt(2)==46))
+&&((str.charCodeAt(3)>47)||(str.charCodeAt(3)<54)))
+	{
+	return true
+	}
+	}
+	else{
+		
+	return false;}
+
+}
+
+function isValidEndTime(str)	{
+	
+	if(str.length>4)
+	{
+if((str.charCodeAt(0)==49)
+&&((str.charCodeAt(1)>50)||(str.charCodeAt(1) <57))
+&&(str.charCodeAt(2)==46)
+&&((str.charCodeAt(3)>47)||(str.charCodeAt(3)<54)))
+	{
+	return true
+	}
+	}
+	else{
+		
+	return false;}
+
+}
+
+
+function isValidUser(str)	{
+	var tmp = 0.0;
+	for (var i = 0; i < str.length; i++) {
+		 tmp = str.charCodeAt(i); // get numeric value
+		if(tmp<32 || (tmp >32 && tmp<48) || (tmp>57 && tmp<65) || (tmp>90 && tmp<97) || tmp>122) {
+			return true;
+		}
+	} 
+}
+
+
+
+function nonNumeric(str)    /*only for numeric fields*/
+{
+	var FlagS=0,FlagN=0;
+	var str1=new Array();
+
+	for(var i=0;i<str.length;i++) /*convert string to a char array*/
+	{
+		str1[i]=str.charAt(i);
+	}
+		
+	
+	for(i=0;i<str1.length;i++)   /*check for non-digits*/
+	{
+		if((str.charAt(i)<'0'||str.charAt(i)>'9') &&(str.charAt(i)!='.') &&(str.charAt(i)!='-')) {
+			
+			FlagN=1;
+		}
+	}
+
+	if(FlagS||FlagN) return true; /*take final decision*/
+}
+
+function nonNumeric1(str)    /*only for numeric fields*/
+{
+	var FlagS=0,FlagN=0;
+	var str1=new Array();
+
+	for(var i=0;i<str.length;i++) /*convert string to a char array*/
+	{
+		str1[i]=str.charAt(i);
+	}
+		
+	
+	for(i=0;i<str1.length;i++)   /*check for non-digits*/
+	{
+		if((str.charAt(i)<'0'||str.charAt(i)>'9') &&(str.charAt(i)!='-') &&(str.charAt(i)!='-')) {
+			
+			FlagN=1;
+		}
+	}
+
+	if(FlagS||FlagN) return true; /*take final decision*/
+}
+function checkmailid()
+		{
+					var Email=EmployeeMaster.EmpEmail.value;
+					var x=Email.indexOf("@");
+					var y=Email.lastIndexOf("@");
+					var a=Email.indexOf(".");
+					var b=Email.lastIndexOf(".");
+
+		if((x!=y)||(x==0)||(x==-1)||(x==(Email.length-1))||(a==0)||(a==-1)||(a==(Email.length-1)))
+		{
+					EmployeeMaster.EmpEmail.focus(); 
+					return false;
+		}
+				else
+				return true;
+
+}	
+
+/*   function DatePosition 
+   parameters: dateString dateType
+   returns: integer (-1, 0, 1)
+   
+   dateString is a date passed as a string in the following
+   formats:
+
+   type 1 : 19970529
+   type 2 : 970529
+   type 3 : 29/05/1997
+   type 4 : 29/05/97
+   type 5 : 05/29/1997
+   type 6 : 05291997
+   type 7 : 052997
+   dateType is a numeric integer from 1 to 7, representing
+   the type of dateString passed, as defined above.
+
+   Returns -1 if the date passed is behind todays date
+   Returns 0 if the date passed is equal to todays date
+   or if dateType is not 1 to 7
+   Returns 1 if the date passed is ahead of todays date
+   
+   Added Y2K checking.  (Works for any century cross over)
+*/
+
+function DatePosition(dateString,dateType) {
+    var now = new Date();
+    var today = new Date(now.getYear(),now.getMonth(),now.getDate());
+    var century = parseInt(now.getYear()/100)*100;
+        
+    if (dateType == 1)
+        var date = new Date(dateString.substring(0,4),
+                            dateString.substring(4,6)-1,
+                            dateString.substring(6,8));
+    else if (dateType == 2)
+    {
+        if ((now.getYear()%100)>=parseInt(dateString.substring(0,2)))
+        {
+            var date = new Date(century+parseInt(dateString.substring(4,6)),
+                            parseInt(dateString.substring(2,4)-1),
+                            dateString.substring(4,6));
+        }
+        else
+        {
+            var date = new Date(century-100+parseInt(dateString.substring(0,2)),
+                            parseInt(dateString.substring(2,4)-1),
+                            dateString.substring(4,6));
+        }
+        
+    }
+    else if (dateType == 3)
+        var date = new Date(dateString.substring(6,10),
+                            dateString.substring(3,5)-1,
+                            dateString.substring(0,2));
+    else if (dateType == 4)
+    {
+        if ((now.getYear()%100)>=parseInt(dateString.substring(6,8)))
+        {
+            var date = new Date(century+parseInt(dateString.substring(4,6)),
+                            parseInt(dateString.substring(3,5)-1),
+                            dateString.substring(0,2));
+        }
+        else
+        {
+            var date = new Date(century-100+parseInt(dateString.substring(4,6)),
+                            parseInt(dateString.substring(3,5)-1),
+                            dateString.substring(0,2));
+        }
+        
+    }
+    else if (dateType == 5)
+			var date = new Date(dateString.substring(6,10),
+			dateString.substring(0,2)-1,dateString.substring(3,5));
+    else if (dateType == 6)
+			var date = new Date(dateString.substring(4,8),
+			dateString.substring(0,2)-1,dateString.substring(2,4));
+    else if (dateType == 7)
+    {
+        if ((now.getYear()%100)>=parseInt(dateString.substring(4,6)))
+        {
+            var date = new Date(century+parseInt(dateString.substring(4,6)),
+            parseInt(dateString.substring(0,2)-1),dateString.substring(2,4));
+        }
+        else
+        {
+            var date = new Date(century-100+parseInt(dateString.substring(4,6)),
+                            parseInt(dateString.substring(0,2)-1),dateString.substring(2,4));
+        }
+        
+    }
+    else
+        return false;
+
+    if (date < today)
+    {
+        return -1;
+    }
+    else if (date > today)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+// Converts two-digit year to four-digit year within a sliding
+// "conversion window." Parameter yyyy is an integer.
+function makeFullYear(yyyy) {
+   if (yyyy < 100) {
+      // Minimum range begins this number of years before the current year.
+      var loCutOffset = 70
+      // Today's full year -- requires JavaScript 1.2
+      var curFullYear = (new Date()).getFullYear()
+      // Today's century (first two digits of the year)
+      var curCent = Math.floor(curFullYear/100)
+      // Actual full year of allowable range minimum
+      var loFullYear = curFullYear - loCutOffset
+      // Actual full year of allowable range maximum
+      var topFullYear = curFullYear + (100 - loCutOffset)
+      // Century (first two digits) of minimum
+      var loCent = (Math.floor(loFullYear/100) < curCent) ? Math.floor(loFullYear/100)
+                    : curCent
+      // Two-digit year of minimum
+      var loYear = loFullYear - (loCent * 100)
+      // Century (first two digits) of maximum
+      var topCent = (loCent == curCent) ? curCent + 1 : curCent
+      // Compare two-digit user entry to two-digit range minimum.
+      if (yyyy >= loYear) {
+         // If entry is equal or above minimum, add the entry to the minimum century.
+         yyyy = (loCent*100) + parseInt(yyyy, 10)
+      } else {
+         // If entry is below minimum, add the entry to the maximum century.
+         yyyy = (topCent*100) + parseInt(yyyy,10)
+      }
+   }
+   return yyyy
+} 
+
+/************************************************
+DESCRIPTION: Validates that a string contains only
+    valid dates with 2 digit month, 2 digit day,
+    4 digit year. Date separator can be ., -, or /.
+    Uses combination of regular expressions and
+    string parsing to validate date.
+    Ex. mm/dd/yyyy or mm-dd-yyyy or mm.dd.yyyy
+
+PARAMETERS:
+   strValue - String to be tested for validity
+
+RETURNS:
+   True if valid, otherwise false.
+
+REMARKS:
+   Avoids some of the limitations of the Date.parse()
+   method such as the date separator character.
+*************************************************/
+
+function validateUSDate( strValue ) {
+  var objRegExp = /^\d{1,2}(\-|\/|\.)\d{1,2}\1\d{4}$/
+  //check to see if in correct format
+  if(!objRegExp.test(strValue))
+    return false; //doesn't match pattern, bad date
+  else{
+    var strSeparator = strValue.substring(2,3) //find date separator
+    var arrayDate = strValue.split(strSeparator); //split date into month, day, year
+    //create a lookup for months not equal to Feb.
+    var arrayLookup = { '01' : 31,'03' : 31, '04' : 30,'05' : 31,'06' : 30,'07' : 31,
+                        '08' : 31,'09' : 30,'10' : 31,'11' : 30,'12' : 31}
+    var intDay = (arrayDate[1]);
+
+    //check if month value and day value agree
+    if(arrayLookup[arrayDate[0]] != null) {
+      if(intDay <= arrayLookup[arrayDate[0]] && intDay != 0)
+        return true; //found in lookup table, good date
+    }
+    //check for February
+    var intYear = parseInt(arrayDate[2]);
+    var intMonth = parseInt(arrayDate[0]);
+    if( ((intYear % 4 == 0 && intDay <= 29) || (intYear % 4 != 0 && intDay <=28)) && intDay !=0)
+      return true; //Feb. had valid number of days
+  }
+  return false; //any other values, bad date
+}
+
+
+/************************************************
+DESCRIPTION: Removes characters from a source string
+  based upon matches of the supplied pattern.
+
+PARAMETERS:
+  strValue - source string containing number.
+
+RETURNS: String modified with characters
+  matching search pattern removed
+
+USAGE:  strNoSpaces = removeCharacters( ' sfdf  dfd',
+                                '\s*')
+*************************************************/
+
+function removeCharacters( strValue, strMatchPattern ) {
+ var objRegExp =  new RegExp( strMatchPattern, 'gi' );
+
+ //replace passed pattern matches with blanks
+  return strValue.replace(objRegExp,' ');
+}
+
+function compareDates(value1,value2) {
+   var date1, date2;
+   var month1, month2;
+   var year1, year2;
+
+   month1 = value1.substring (0, value1.indexOf ("-"));
+   date1 = value1.substring (value1.indexOf ("-")+1, value1.lastIndexOf ("-"));
+   year1 = value1.substring (value1.lastIndexOf ("-")+1, value1.length);
+
+   month2 = value2.substring (0, value2.indexOf ("-"));
+   date2 = value2.substring (value2.indexOf ("-")+1, value2.lastIndexOf ("-"));
+   year2 = value2.substring (value2.lastIndexOf ("-")+1, value2.length);
+
+   if (year1 > year2) return 1;
+   else if (year1 < year2) return -1;
+   else if (month1 > month2) return 1;
+   else if (month1 < month2) return -1;
+   else if (date1 > date2) return 1;
+   else if (date1 < date2) return -1;
+   else return 0;
+} 
+  
+ 
+function validDate(theDate) { 
+var re_date = new RegExp("^[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}$"); 
+var isValid = re_date.test(theDate); 
+if (!isValid) { 
+	alert("Please enter the date in the correct DD-MM-YYYY format."); 
+} 
+
+return isValid; 
+} 
+
+
+</script>
+
+
+<script language="javascript">
+
+
+//checking of data on onkeyup function
+
+function chkdata(ind)
+{
+var checkstr
+var fieldname
+checkstr=document.forms[0].elements[ind].value
+fieldname=document.forms[0].elements[ind].name
+if (ind==6 || ind==7  || ind==9 || ind==12 || ind==13 || ind==15 || ind==16 || ind==29 || ind==30 || ind==31 || ind==54 )	
+var checkOK = " \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'";
+else if (ind==27)												
+var checkOK = " 0123456789.@_-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+else if (ind==17 || ind==25 || ind==26 )									
+var checkOK = "0123456789-";
+else if (ind==48)																		 
+var checkOK = "0123456789- ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+else if (ind==52 || ind==55)															
+var checkOK = " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+else																					
+var checkOK = " 0123456789.-,/#:()ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  var allValid = true;
+  var decPoints = 0;
+  var allNum = "";
+  for (i = 0;  i < checkstr.length;  i++)
+  {
+	ch = checkstr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+	  { break;}
+	
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+    if (ch != ",")
+      allNum += ch;
+  }
+  if (!allValid)
+{
+   document.forms[0].elements[ind].value=allNum
+   document.forms[0].elements[ind].focus()
+ 
+}
+}
+//nsr -->
+
+function isEmpty(str)
+{
+  return((str==null) ||(str.length==0))
+}
+
+function isWhitespace(str)
+{
+  var i=0 ;
+  if(isEmpty(str)) return true;
+  for(i=0;i<str.length;i++)
+   {
+    var currentchar=str.charAt(i);
+	if(whitespace.indexOf(currentchar)==-1) return false;
+   }
+   return true;
+ }
+
+<!--Function is check wheather the value of email address is correct --> 
+
+ function isEmail(e_addrs)
+ {
+var j=1,count=0;
+ var i=1;
+ var e_addlength=e_addrs.length;
+ if(isEmpty(e_addrs))return false;
+ if(isWhitespace(e_addrs)) return false;
+ for(j=1;j<=e_addrs.length;j++)
+ {
+ if(e_addrs.charAt(j)=="@")
+ { 
+ count+=1;
+ }
+ }
+ if(count==0)return false;
+ if(count>1)return false;
+
+<!-- there must be >=1 char before @ in e mail id    -->  
+ while((i<e_addlength)&& (e_addrs.charAt(i)!="@"))
+ {
+  i++;
+ } 
+if((i>=e_addlength)||(e_addrs.charAt(i)!="@")) {return false;}
+else i+=2;
+
+<!-- look for a period -->
+while((i<e_addlength)&&(e_addrs.charAt(i)!="."))
+{
+ i++;
+}
+
+<!-- there must be at least one character after the period -->
+
+if((i>=e_addlength-1 )||(e_addrs.charAt(i)!=".")) return false;
+
+}
+ 
+ 
+<!--end of emailfunction -->
+function poselect()
+{
+document.OnlineForm.action="OnlineRegistration.jsp?pocode="+document.OnlineForm.PIA.value;
+document.OnlineForm.method="post";
+document.OnlineForm.submit();
+}
+function showSpouse()
+{
+if(document.OnlineForm.MRTLSTATUS.value==" "||document.OnlineForm.MRTLSTATUS.value=="S"||document.OnlineForm.MRTLSTATUS.value=="D")	{
+document.OnlineForm.SPOUSENAME.disabled=true;
+document.OnlineForm.SPOUSENAME.visibilty=false; 
+document.OnlineForm.SPOUSENAME.value="";
+document.forms[0].elements[29].style.backgroundColor="#CCFFFF";
+
+}
+else{document.OnlineForm.SPOUSENAME.disabled=false;
+document.forms[0].elements[29].style.backgroundColor="white";}}
+
+function CopyAddress()
+{
+	if(document.OnlineForm.copyadd.checked==true) 
+	{
+				document.OnlineForm.PERMADD1.value=document.OnlineForm.PRESADD1.value;
+				document.OnlineForm.PERMADD2.value=document.OnlineForm.PRESADD2.value;
+				document.OnlineForm.PERMADD3.value=document.OnlineForm.PRESADD3.value;
+				
+
+	}
+	else
+	{
+				document.OnlineForm.PERMADD1.value="";
+				document.OnlineForm.PERMADD2.value="";
+				document.OnlineForm.PERMADD3.value="";
+				
+	}
+}
+
+
+
+function change(frmobj)
+{
+	if(document.OnlineForm.CHNAME.checked==true)
+	{
+	document.OnlineForm.PRVNAME.disabled=false;
+	document.OnlineForm.PRVNAME.value="";
+	document.forms[0].elements[9].style.backgroundColor="white";
+}
+else{document.OnlineForm.PRVNAME.disabled=true;
+	document.OnlineForm.PRVNAME.value="";
+	document.forms[0].elements[9].style.backgroundColor="#CCFFFF";
+}}
+
+function pmnt(frmobj)
+{
+	if(document.OnlineForm.pmntmode.checked==true)
+	{
+	document.OnlineForm.pmntmode.value="D";
+	document.OnlineForm.DDNO.disabled=false;
+	document.OnlineForm.DDNO.value="";
+	document.OnlineForm.BANKCODE.disabled=false;
+	document.OnlineForm.BANKCODE.value="";
+	document.OnlineForm.DDDATE.disabled=false;
+	document.OnlineForm.DDDATE.value="";
+}
+else{
+	document.OnlineForm.DDNO.disabled=true;
+
+	document.OnlineForm.BANKCODE.disabled=true;
+	
+	document.OnlineForm.DDDATE.disabled=true;
+	}
+}
+function oldPassport(frmobj)
+{
+	if(document.OnlineForm.oldpassport.checked==true)
+	{	
+     document.OnlineForm.oldpassport.value="O";
+    document.OnlineForm.OLDPPTNO.disabled=false;
+	document.OnlineForm.OLDISSUPLAC.disabled=false;
+	document.OnlineForm.OLDPPTISSUDATE.disabled=false;
+    document.OnlineForm.OLDFILENO.disabled=false;
+	 document.OnlineForm.OLDPPTEXPIRY.disabled=false;
+	
+	}
+else{
+	
+	document.OnlineForm.OLDPPTNO.disabled=true;
+
+	document.OnlineForm.OLDISSUPLAC.disabled=true;
+	
+	document.OnlineForm.OLDPPTISSUDATE.disabled=true;
+	
+	document.OnlineForm.OLDFILENO.disabled=true;
+	 document.OnlineForm.OLDPPTEXPIRY.disabled=true;
+}
+}
+
+ function CHECKADD(frmobj)
+{if(document.OnlineForm.LASTADD.checked==true){      	
+     document.OnlineForm.PRVADD1.disabled=false;
+	 document.OnlineForm.PRVADD11.disabled=false;
+	document.OnlineForm.PRVADD2.disabled=false;
+	document.OnlineForm.PRVADD12.disabled=false;
+	document.OnlineForm.PRVADD3.disabled=false;
+	document.OnlineForm.PRVADD13.disabled=false;
+	document.OnlineForm.select1.disabled=false;
+	document.OnlineForm.select2.disabled=false;
+	document.OnlineForm.select3.disabled=false;
+	document.OnlineForm.select4.disabled=false;
+	document.OnlineForm.select5.disabled=false;
+	document.OnlineForm.select6.disabled=false;
+	document.OnlineForm.select7.disabled=false;
+	document.OnlineForm.select8.disabled=false;
+    document.OnlineForm.PRVADD1.value="";
+	document.OnlineForm.PRVADD11.value="";
+	document.OnlineForm.PRVADD2.value="";
+	document.OnlineForm.PRVADD12.value="";
+	document.OnlineForm.PRVADD3.value="";
+	document.OnlineForm.PRVADD13.value="";
+	
+}
+else{        document.OnlineForm.PRVADD1.disabled=true;
+	 		
+			document.OnlineForm.PRVADD11.disabled=true;
+				document.OnlineForm.PRVADD2.disabled=true;
+				document.OnlineForm.PRVADD12.disabled=true;
+				document.OnlineForm.PRVADD3.disabled=true;
+				document.OnlineForm.PRVADD13.disabled=true;
+				 document.OnlineForm.select1.disabled=true;
+	 			document.OnlineForm.select2.disabled=true;
+				document.OnlineForm.select3.disabled=true;
+				document.OnlineForm.select4.disabled=true;
+				document.OnlineForm.select5.disabled=true;
+				document.OnlineForm.select6.disabled=true;
+				document.OnlineForm.select7.disabled=true;
+				document.OnlineForm.select8.disabled=true;
+				 document.OnlineForm.PRVADD1.value="";
+	 		
+			document.OnlineForm.PRVADD11.value="";
+				document.OnlineForm.PRVADD2.value="";
+				document.OnlineForm.PRVADD12.value="";
+				document.OnlineForm.PRVADD3.value="";
+				document.OnlineForm.PRVADD13.value="";
+}}
+
+
+
+<!-- function for check all validation of this form -->
+function verify(){
+   flag=0;
+       
+	if (isEmpty(document.OnlineForm.PIA.value)){alert("Please Select Passport Office"); document.OnlineForm.PIA.focus();return false;	}
+	if (isEmpty(document.OnlineForm.DIST.value)){alert("Please Select District"); document.OnlineForm.DIST.focus();return false;}
+	if (document.OnlineForm.SERVICE.value=="Select"){alert("Please Select Service "); document.OnlineForm.SERVICE.focus();return false;}
+	if (isValid(document.OnlineForm.SURNAME.value)){alert("Field 'Sur Name' cann't have Invalid Characters"); document.OnlineForm.SURNAME.focus();	return false;}
+	if(!isEmpty(document.OnlineForm.SURNAME.value)){if(fullname1(document.OnlineForm.SURNAME.value)){alert("Please enter Applicant's  Surname without using Abbreviation like DR,MRS,MISS");document.OnlineForm.SURNAME.focus();return false;}}
+	if(!isEmpty(document.OnlineForm.SURNAME.value)){if(fullname(document.OnlineForm.SURNAME.value)){alert("Please enter Applicant's Full Surname");document.OnlineForm.SURNAME.focus();return false;}} 
+	 
+	if (isEmpty(document.OnlineForm.APPLNAME.value)){alert("Please Enter Applname  "); document.OnlineForm.APPLNAME.focus();	return false;}
+	if (isValid(document.OnlineForm.APPLNAME.value)){alert("Field 'Applicant Name' cann't have Invalid  Characters");document.OnlineForm.APPLNAME.focus();	return false;}
+		if(!isEmpty(document.OnlineForm.APPLNAME.value))
+	{
+	if(fullname1(document.OnlineForm.APPLNAME.value))
+		{alert("Please enter Applicant's name without Using Abbreviation like MR,MISS,DR");
+		document.OnlineForm.APPLNAME.focus();
+		return false;
+		}}
+	if(!isEmpty(document.OnlineForm.APPLNAME.value))
+	{
+	if(fullname(document.OnlineForm.APPLNAME.value))
+		{alert("Please enter Applicant's Full name ");
+		document.OnlineForm.APPLNAME.focus();
+		return false;
+		}}
+	if(document.OnlineForm.CHNAME.checked==true) {
+	 if(isEmpty(document.OnlineForm.PRVNAME.value))
+		{alert("Please enter Applicant's Previous Name ");
+		document.OnlineForm.PRVNAME.focus();
+		return false;
+		}
+		}
+
+if (isValid(document.OnlineForm.PRVNAME.value)){alert("Field 'Previous Name' cann't have Invalid Characters"); document.OnlineForm.PRVNAME.focus();	return false;}
+if(!isEmpty(document.OnlineForm.PRVNAME.value)){if(fullname1(document.OnlineForm.PRVNAME.value)){alert("Please enter Applicant's  Previous name without Using Abbreviation like DR,MRS,MISS");document.OnlineForm.PRVNAME.focus();return false;}} 
+if(!isEmpty(document.OnlineForm.PRVNAME.value)){if(fullname(document.OnlineForm.PRVNAME.value)){alert("Please enter Applicant's Full Previous name ");document.OnlineForm.PRVNAME.focus();return false;}} 
+
+if (isEmpty(document.OnlineForm.FTHRNAME.value)){alert("Please Enter Father name "); document.OnlineForm.FTHRNAME.focus();	return false;}
+	if (isValid(document.OnlineForm.FTHRNAME.value)){alert("Field 'Father Name' cann't have Invalid Characters");document.OnlineForm.FTHRNAME.focus();	return false;}
+	if(!isEmpty(document.OnlineForm.FTHRNAME.value)){if(fullname1(document.OnlineForm.FTHRNAME.value)){alert("Please enter Father's  name without Using Abbreviation like DR,MRS,MISS");document.OnlineForm.FTHRNAME.focus();return false;}}
+if(!isEmpty(document.OnlineForm.FTHRNAME.value)){if(fullname(document.OnlineForm.FTHRNAME.value)){alert("Please enter Father's Full name ");document.OnlineForm.FTHRNAME.focus();return false;}}
+
+if (isEmpty(document.OnlineForm.MTHRNAME.value)){alert("Please Enter Mother Name "); document.OnlineForm.MTHRNAME.focus();return false;}
+	if (isValid(document.OnlineForm.MTHRNAME.value)){alert("Field 'Mother Name' cann't have Invalid Characters");document.OnlineForm.MTHRNAME.focus();	return false;}
+	if(!isEmpty(document.OnlineForm.MTHRNAME.value)){if(fullname1(document.OnlineForm.MTHRNAME.value)){alert("Please enter Mother's  name without Using Abbreviation like DR,MRS,MISS");document.OnlineForm.MTHRNAME.focus();return false;}} 
+if(!isEmpty(document.OnlineForm.MTHRNAME.value)){if(fullname(document.OnlineForm.MTHRNAME.value)){alert("Please enter Mother's Full name ");document.OnlineForm.MTHRNAME.focus();return false;}} 
+
+ if (document.OnlineForm.MRTLSTATUS.value=="Select"){alert("Please Select Marital Status "); document.OnlineForm.MRTLSTATUS.focus();	return false;}
+if((document.OnlineForm.MRTLSTATUS.value)=="M"){if(isEmpty(document.OnlineForm.SPOUSENAME.value)){alert("Please Enter the 'Spouse's Name '");	document.OnlineForm.SPOUSENAME.focus();	return false;}}
+if (isValid(document.OnlineForm.SPOUSENAME.value)){alert("Field 'Spouse's Name ' cann't have Invalid Characters"); document.OnlineForm.SPOUSENAME.focus();	return false;}
+if(!isEmpty(document.OnlineForm.SPOUSENAME.value)){if(fullname1(document.OnlineForm.SPOUSENAME.value)){alert("Please enter Spouse's Full name without Using Abbreviation like DR,MISS,MS ");document.OnlineForm.SPOUSENAME.focus();return false;}}
+if(!isEmpty(document.OnlineForm.SPOUSENAME.value)){if(fullname(document.OnlineForm.SPOUSENAME.value)){alert("Please enter Spouse's Full name ");document.OnlineForm.SPOUSENAME.focus();return false;}}
+
+if (isEmpty(document.OnlineForm.APPLDOB.value))	{	
+	alert("Please Enter Applicant Date of birth "); document.OnlineForm.APPLDOB.focus();	return false;}
+    var APPLDOB= document.OnlineForm.APPLDOB.value; 
+	var Apday = APPLDOB.substring(0, 2); 
+	if(Apday.length==1)	{		Apday=0+Apday;	} 
+	var Apmonth = APPLDOB.substring(3, 5); 
+	if(Apmonth.length==1)	{	Apmonth=0+Apmonth;	} 
+	var Apdt=Apmonth+"-"+Apday+"-"+APPLDOB.substring(6); 
+ 
+	if(validateUSDate(Apdt)==false)	{ 
+		alert("Not a Valid Date Of issue"+Apdt); document.OnlineForm.APPLDOB.focus();	return false; 
+	} 
+	var Apedate=Apmonth+"-"+Apday+"-" +APPLDOB.substring(6); 
+	if(compareDates(document.OnlineForm.currentdate.value,Apedate)==-1) 
+		{ 
+			alert("Date of birth Cannot be Greater Than Today  Date"); 
+			document.OnlineForm.APPLDOB.focus();	
+			return false; 
+		} 
+	
+	if (document.OnlineForm.APPLSEX.value=="Select"){alert("Please Select Sex  "); document.OnlineForm.APPLSEX.focus();return false;}
+	if (isEmpty(document.OnlineForm.PLACBRTH.value)){alert("Please Enter Place of Birth");document.OnlineForm.PLACBRTH.focus();return false;	}
+   if (isValid(document.OnlineForm.PLACBRTH.value))	{alert("Place of Birth cann't have Invalid Characters"); document.OnlineForm.PLACBRTH.focus();	return false;}
+   if (isEmpty(document.OnlineForm.BRTHDIST.value)){alert("Please Enter Dist/Country of Birth");document.OnlineForm.BRTHDIST.focus();return false;	}
+if (isValid(document.OnlineForm.BRTHDIST.value)){alert("Field District/ State  ' cann't have Invalid Characters"); document.OnlineForm.BRTHDIST.focus();	return false;}
+	if (isEmpty(document.OnlineForm.IMARK.value)){alert("Please Enter Visible Identification Mark  ");document.OnlineForm.IMARK.focus();return false;	}
+	if (isValid(document.OnlineForm.IMARK.value)){alert("Field Visible Identification Mark ' cann't have Invalid Characters"); document.OnlineForm.IMARK.focus();	return false;}
+if (isValid(document.OnlineForm.PROF.value)){alert("Field Profession' cann't have Invalid Characters"); document.OnlineForm.PROF.focus();return false;}
+	if (isEmpty(document.OnlineForm.PRESADD1.value)){alert("Please Enter Present Address Line 1 "); document.OnlineForm.PRESADD1.focus();return false;	}
+
+if(!isEmpty(document.OnlineForm.PRESADD1.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?"; 
+  for (var i = 0; i < document.OnlineForm.PRESADD1.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PRESADD1.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In present Address field");
+	document.OnlineForm.PRESADD1.focus();return false;}}}
+	
+if (isEmpty(document.OnlineForm.PRESADD2.value)){alert("Please Enter Present Address Line 2 "); document.OnlineForm.PRESADD2.focus();	return false;}
+if(!isEmpty(document.OnlineForm.PRESADD2.value)){
+	var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PRESADD2.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PRESADD2.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In present Address field");
+	document.OnlineForm.PRESADD2.focus();return false;}}}
+
+	
+	if(!isEmpty(document.OnlineForm.PRESADD1.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PRESADD3.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PRESADD3.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In present Address field");
+	document.OnlineForm.PRESADD3.focus();return false;}}}
+	if (isEmpty(document.OnlineForm.PERMADD1.value))	{	
+		alert("Please Enter Permanent Address Line 1 "); document.OnlineForm.PERMADD1.focus();	return false;
+	}
+	if(!isEmpty(document.OnlineForm.PERMADD1.value)){		
+//var iChars = "!#$%^&*()=[]\\\';{}|\":<>?";
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PERMADD1.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PERMADD1.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In present Address field");
+	document.OnlineForm.PERMADD1.focus();return false;}}}
+
+if (isEmpty(document.OnlineForm.RESDATE.value))	{	
+	alert("Please Enter Resident start date"); document.OnlineForm.RESDATE.focus();	return false;}
+
+      var RESDATE= document.OnlineForm.RESDATE.value; 
+	var Apday = RESDATE.substring(0, 2); 
+	if(Apday.length==1)	{		Apday=0+Apday;	} 
+	var Apmonth = RESDATE.substring(3, 5); 
+	if(Apmonth.length==1)	{	Apmonth=0+Apmonth;	} 
+	var Apdt=Apmonth+"-"+Apday+"-"+RESDATE.substring(6); 
+ 
+	if(validateUSDate(Apdt)==false)	{ 
+		alert("Not a Valid Date Of issue"+Apdt); document.OnlineForm.RESDATE.focus();	return false; 
+	} 
+	var Apedate=Apmonth+"-"+Apday+"-" +RESDATE.substring(6); 
+	if(compareDates(document.OnlineForm.currentdate.value,Apedate)==-1) 
+		{ 
+			alert("RESDate Cannot be Greater Than Today  Date"); 
+			document.OnlineForm.RESDATE.focus();	
+			return false; 
+		} 
+if (isEmpty(document.OnlineForm.PERMADD2.value))	{	
+		alert("Please Enter Permanent Address Line 2 "); document.OnlineForm.PERMADD2.focus();	return false;}
+	if(!isEmpty(document.OnlineForm.PERMADD2.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PERMADD2.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PERMADD2.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In present Address field");
+	document.OnlineForm.PERMADD2.focus();return false;}}}
+if(isEmpty(document.OnlineForm.EDUQ.value)){
+	alert("Please Enter Qualification");
+document.OnlineForm.EDUQ.focus();return false;}
+	if(!isEmpty(document.OnlineForm.PERMADD3.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PERMADD3.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PERMADD3.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In present Address field");
+	document.OnlineForm.PERMADD3.focus();return false;}}}
+		if(!isEmpty(document.OnlineForm.EDUQ.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.EDUQ.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.EDUQ.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed Qualification field");
+	document.OnlineForm.EDUQ.focus();return false;}}}
+	if(!isEmpty(document.OnlineForm.PROF.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PROF.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PROF.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed Qualification field");
+	document.OnlineForm.PROF.focus();return false;}}}
+	if (nonNumeric1(document.OnlineForm.PHONENO.value))	{	
+		alert("Please Enter Vaild PHONENO i.e. numeric"); document.OnlineForm.PHONENO.focus();	return false;
+	}
+	if (isEmpty(document.OnlineForm.PHONENO.value))	{	
+			document.OnlineForm.PHONENO.value=0;
+	}
+	if (nonNumeric1(document.OnlineForm.MOBILENO.value))	{	
+		alert("Please Enter Vaild MOBILE NO i.e. numeric"); document.OnlineForm.MOBILENO.focus();	return false;
+	}
+	if (isEmpty(document.OnlineForm.MOBILENO.value))	{	
+			document.OnlineForm.MOBILENO.value=0;
+	}
+ if(!isEmpty(document.OnlineForm.EMAIL.value)){		
+var iChars = "!#$%^&*()=[]\\\';,/{}|\":<>?";
+  for (var i = 0; i < document.OnlineForm.EMAIL.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.EMAIL.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In emailid field");
+	document.OnlineForm.EMAIL.focus();return false;}}}
+if (!isEmpty(document.OnlineForm.MOBILENO.value)){		
+var iChars = "!#$%^&*()=[]\\\';,/{}|\":<>?";
+  for (var i = 0; i < document.OnlineForm.MOBILENO.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.MOBILENO.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In Mobile No field");		document.OnlineForm.MOBILENO.focus();return false;}	}}
+	if (!isEmpty(document.OnlineForm.PHONENO.value)){		
+var iChars = "!#$%^&*()=[]\\\';,/{}|\":<>?";
+  for (var i = 0; i < document.OnlineForm.PHONENO.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PHONENO.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In Phone No field");		document.OnlineForm.PHONENO.focus();return false;}}}
+	if (isEmpty(document.OnlineForm.HIGHT.value)){	
+		alert("Please Enter Applicant height in cms."); document.OnlineForm.HIGHT.focus();return false;	}
+		if(!isNumeric(document.OnlineForm.HIGHT.value))
+	{alert("Please Enter Numeric Value in Height");document.OnlineForm.HIGHT.focus();return false;}
+if (!isEmpty(document.OnlineForm.DDNO.value)){	
+	  if (!isEmpty(document.OnlineForm.DDNO.value)){		
+var iChars = "!#$%^&*()=[]\\\';,/{}|\":<>?";
+  for (var i = 0; i < document.OnlineForm.DDNO.value.length; i++){
+  	if (iChars.indexOf(document.OnlineForm.DDNO.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In DDNO field");
+	document.OnlineForm.DDNO.focus();return false;}}}
+  if (isEmpty(document.OnlineForm.DDDATE.value)){	
+	alert("Please Enter Demand Draft Date "); document.OnlineForm.DDDATE.focus();	return false;
+	}
+   var DDDATE= document.OnlineForm.DDDATE.value; 
+	var Apday = DDDATE.substring(0, 2); 
+	if(Apday.length==1)	{		Apday=0+Apday;	} 
+	var Apmonth =DDDATE.substring(3, 5); 
+	if(Apmonth.length==1)	{	Apmonth=0+Apmonth;	} 
+	var Apdt=Apmonth+"-"+Apday+"-"+DDDATE.substring(6); 
+	if(validateUSDate(Apdt)==false)	{ 
+		alert("Not a Valid Date Of issue"+Apdt); document.OnlineForm.DDDATE.focus();	return false; 
+	} 
+	var Apedate=Apmonth+"-"+Apday+"-" +DDDATE.substring(6); 
+	if(compareDates(document.OnlineForm.currentdate.value,Apedate)==-1) 
+		{alert("Demand Draft Date can not be Greater Than Today  Date"); 
+		document.OnlineForm.DDDATE.focus();	return false; } }
+		
+
+if(document.OnlineForm.LASTADD.checked==true){if(document.OnlineForm.select1.value=="select"||document.OnlineForm.select5.value=="select" ||document.OnlineForm.select2.value=="select"||document.OnlineForm.select6.value=="select"){alert ("Please enter last residential address Period");document.OnlineForm.select1.focus();return false;}
+}
+
+if(!(document.OnlineForm.select1.value=="select" ||document.OnlineForm.select5.value=="select"||document.OnlineForm.select2.value=="select"||document.OnlineForm.select6.value=="select"))
+{if(document.OnlineForm.PRVADD1.value==""||document.OnlineForm.PRVADD2.value==""){alert ("Please enter last residential  address1 ");document.OnlineForm.PRVADD1.focus();return false;}}
+
+if(document.OnlineForm.LASTADD.checked==true){ 
+if(!(document.OnlineForm.select3.value=="select")){if(document.OnlineForm.select3.value=="select"||document.OnlineForm.select4.value=="select" ||document.OnlineForm.select7.value=="select"||document.OnlineForm.select8.value=="select"){alert ("Please enter last residential Period");document.OnlineForm.select3.focus();return false;}}}
+if(!(document.OnlineForm.select3.value=="select"||document.OnlineForm.select4.value=="select"||document.OnlineForm.select7.value=="select"||document.OnlineForm.select8.value=="select"))
+{if(document.OnlineForm.PRVADD11.value==""||document.OnlineForm.PRVADD12.value==""){alert ("Please enter last residential  address2 ");document.OnlineForm.PRVADD11.focus();return false;}}
+
+if(document.OnlineForm.LASTADD.checked==true){ 
+if(!(document.OnlineForm.select1.value=="select"||document.OnlineForm.select3.value=="select" ||document.OnlineForm.select5.value=="select" ||document.OnlineForm.select7.value=="select"||document.OnlineForm.select2.value=="select" ||document.OnlineForm.select4.value=="select" ||document.OnlineForm.select6.value=="select"||document.OnlineForm.select8.value=="select")&&(document.OnlineForm.PRVADD1.value==""||document.OnlineForm.PRVADD2.value==""||document.OnlineForm.PRVADD11.value==""||document.OnlineForm.PRVADD12.value=="")){alert ("Please enter last residential address ");document.OnlineForm.PRVADD1.focus();return false;}}
+
+
+
+if(!isEmpty(document.OnlineForm.PRVADD1.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PRVADD1.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PRVADD1.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In Previous Address field");
+	document.OnlineForm.PRVADD1.focus();return false;}}}
+if(!isEmpty(document.OnlineForm.PRVADD11.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PRVADD11.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PRVADD11.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In Previous Address field");
+	document.OnlineForm.PRVADD11.focus();return false;}}}
+if(!isEmpty(document.OnlineForm.PRVADD12.value)){		
+var iChars = "!!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PRVADD12.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PRVADD12.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In Previous Address field");
+	document.OnlineForm.PRVADD12.focus();return false;}}}
+if(!isEmpty(document.OnlineForm.PRVADD13.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PRVADD13.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PRVADD13.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In Previous Address field");
+	document.OnlineForm.PRVADD13.focus();return false;}}}
+if(!isEmpty(document.OnlineForm.PRVADD2.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PRVADD2.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PRVADD2.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In Previous Address field");
+	document.OnlineForm.PRVADD2.focus();return false;}}}
+if(!isEmpty(document.OnlineForm.PRVADD3.value)){		
+var iChars = "!$%^&*=[]\\\';{}|\"<>?";
+  for (var i = 0; i < document.OnlineForm.PRVADD3.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.PRVADD3.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed In Previous Address field");
+	document.OnlineForm.PRVADD3.focus();return false;}}}
+
+if (isValid(document.OnlineForm.OLDISSUPLAC.value)){
+		alert("Field Passport Issue Place cann't have Invalid Characters"); document.OnlineForm.OLDISSUPLAC.focus();return false;}
+	
+
+if (!isEmpty(document.OnlineForm.OLDPPTNO.value)){		
+    var iChars = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?";
+  for (var i = 0; i < document.OnlineForm.OLDPPTNO.value.length; i++) {
+  	if (iChars.indexOf(document.OnlineForm.OLDPPTNO.value.charAt(i)) != -1) {
+  	alert ("No Special Characters Allowed in Old Passport No");
+	document.OnlineForm.OLDPPTNO.focus();return false;}
+  }
+
+if (isEmpty(document.OnlineForm.OLDISSUPLAC.value))	{	
+		alert("Please Enter Place of Issue "); document.OnlineForm.OLDISSUPLAC.focus();	return false;
+	}
+
+ if (isEmpty(document.OnlineForm.OLDPPTISSUDATE.value)){	
+	alert("Please Enter  Old Passport Issue Date "); document.OnlineForm.OLDPPTISSUDATE.focus();	return false;
+	}
+      var OLDPPTISSUDATE = document.OnlineForm.OLDPPTISSUDATE.value; 
+	var pday = OLDPPTISSUDATE.substring(0, 2); 
+	if(pday.length==1){pday=0+pday;	} 
+	var pmonth = OLDPPTISSUDATE.substring(3, 5); 
+	if(pmonth.length==1){pmonth=0+pmonth;} 
+	var pdt=pmonth+"-"+pday+"-"+OLDPPTISSUDATE.substring(6); 
+ 
+	if(validateUSDate(pdt)==false){alert("Not a Valid Date Of issue"+pdt); document.OnlineForm.OLDPPTISSUDATE.focus();	return false; } 
+	var pedate=pmonth+"-"+pday+"-" +OLDPPTISSUDATE.substring(6); 
+	if(compareDates(document.OnlineForm.currentdate.value,pedate)==-1) 
+		{ 
+			alert("Date of issue Cannot be Greater Than Today  Date"); 
+			document.OnlineForm.OLDPPTISSUDATE.focus();	
+			return false; 
+		} }
+if(document.OnlineForm.pmntmode.checked==true)
+{
+if (isEmpty(document.OnlineForm.DDNO.value)){alert("Please Select Demand Draft No"); document.OnlineForm.DDNO.focus();return false;	}
+if (isEmpty(document.OnlineForm.BANKCODE.value)){alert("Please Select Bank's Name"); document.OnlineForm.BANKCODE.focus();return false;	}
+if (isEmpty(document.OnlineForm.DDDATE.value)){alert("Please Select Demand Draft Date"); document.OnlineForm.DDDATE.focus();return false;	}
+}else{document.OnlineForm.DDNO.value="";
+      document.OnlineForm.DDDATE.value="";
+	  document.OnlineForm.BANKCODE.value="";}
+if(document.OnlineForm.oldpassport.checked==true)
+{
+if (isEmpty(document.OnlineForm.OLDPPTNO.value)){alert("Please Select Old Passport No"); document.OnlineForm.OLDPPTNO.focus();return false;	}
+if (isEmpty(document.OnlineForm.OLDISSUPLAC.value)){alert("Please Select Old Passport Issue Place"); document.OnlineForm.OLDISSUPLAC.focus();return false;	}
+if (isEmpty(document.OnlineForm.OLDPPTISSUDATE.value)){alert("Please Select Old Passport Issue Date"); document.OnlineForm.OLDPPTISSUDATE.focus();return false;	}
+if (isEmpty(document.OnlineForm.OLDFILENO.value)){alert("Please Select Old File No"); document.OnlineForm.OLDFILENO.focus();return false;
+}
+} else{document.OnlineForm.OLDISSUPLAC.value="";
+      document.OnlineForm.OLDPPTISSUDATE.value="";
+	  document.OnlineForm.OLDFILENO.value="";
+	   document.OnlineForm.OLDPPTNO.value="";}
+
+
+
+ var check_it= confirm("Please verify the details again. Press OK for Save and Cancel for  Re Edit ?");
+if (check_it== true)
+ {return true; }
+else
+ {return false; }
+}
+function checkit()
+  {if (isEmpty(document.OnlineForm.DIST.value)){alert("Please Select Passport Office & District First"); document.OnlineForm.PIA.focus();}}
+ function gobirth()
+  {document.OnlineForm.APPLDOB.focus();  }
+ function goplace(){document.OnlineForm.PLACBRTH.focus();}
+</script>
+
+<link href="OnlineRegistration.jsp_files/PIS.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+<!--
+.combo {  background-color: #FFFFE8}
+.checkbox {  background-color: #FFFFE8}
+-->
+</style>
+<script charset="utf-8" id="injection_graph_func" src="OnlineRegistration.jsp_files/injection_graph_func.js"></script></head><body>
+<form name="OnlineForm" method="post" action="OnlineRegistrationSave.jsp" onsubmit="return verify(this.form)">
+<input name="currentdate" value="03-01-2009" type="hidden">
+  <table bordercolorlight="#FFFFFF" bordercolordark="#E3E3E3" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="1" height="1057" width="914">
+    <tbody><tr> 
+      <td height="3" width="0%">&nbsp;</td>
+      <td bgcolor="#ff7920" height="3" width="91%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font color="#ffff99" face="Arial, Helvetica, sans-serif" size="4">Online 
+        Passport Application for Passport Office</font></b></font></td>
+      <td height="3" width="9%">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td align="right" height="1012" valign="middle" width="0%"></td>
+      <td align="left" bgcolor="#ffffff" height="900" valign="top" width="91%"> 
+        <div align="left"></div>
+        <p><font size="2">&nbsp; </font></p>
+        <p align="right"><font size="2">
+          <input name="Submit222" value="Re-Print a Previous Application" class="LoginButton1" onclick="javascript:location='PPT_DupApplForm.jsp'" type="reset">
+         <img src="OnlineRegistration.jsp_files/New_icon.gif" height="9" width="25"> </font> </p>
+        <table align="center" bgcolor="#ffffff" border="1" cellpadding="0" cellspacing="0" height="901" hspace="0" vspace="10" width="838">
+          <tbody><tr bgcolor="#ebebeb"> 
+            <td colspan="4" height="2" nowrap="nowrap"><font color="#990000"><b>Note: Columns 
+              marked with * are compulsory to fill in. </b></font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="2" nowrap="nowrap"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Passport 
+                Office</font><font size="2"><font color="#ff0000">*</font></font></font><font color="#81460c"> 
+                </font></font></div></td>
+            <td height="2" width="29%"><b><font size="2"> 
+              <select name="PIA" class="combo" onchange="poselect()" tabindex="1">
+                <option value="">Select Office</option>
+                <option value="AHD"> AHEMDABAD</option>
+                <option value="ASR">AMRITSAR</option>
+                <option value="BHU"> BHUBNESWAR</option>
+                <option value="BLY">BAREILLY</option>
+                <option value="BOM"> MUMBAI</option>
+                <option value="BPL"> BHOPAL</option>
+                <option value="CAL"> KOLKATA</option>
+                <option value="CBE">COIMBATORE</option>
+                <option value="CHD"> CHANDIGARH</option>
+                <option value="COC"> COCHIN</option>
+                <option value="DDN">DEHRADUN</option>
+                <option value="DLH"> DELHI</option>
+                <option value="GOA">GOA</option>
+                <option value="GUW"> GUWAHATI</option>
+                <option value="GZB"> GHAZIABAD</option>
+                <option value="HYD"> HYDERABAD</option>
+                <option value="HYT">HYDERABAD Tatkal</option>
+                <option value="JAL"> JALANDHAR</option>
+                <option value="JMU"> JAMMU</option>
+                <option value="JPR"> JAIPUR</option>
+                <option value="KOZ"> KOZHIKODE</option>
+                <option value="LKO"> LUCKNOW</option>
+                <option value="MAS"> CHENNAI</option>
+                <option value="MDU">MADURAI</option>
+                <option value="MLP">MALAPPURAM</option>
+                <option value="NGP">NAGPUR</option>
+                <option value="PAT"> PATNA</option>
+                <option value="PNE">PUNE</option>
+                <option value="RCH">RANCHI</option>
+                <option value="RPR">RAIPUR</option>
+                <option value="SGR">SRINAGAR</option>
+                <option value="SML">SHIMLA</option>
+                <option value="SUR"> SURAT</option>
+                <option value="THN">THANE</option>
+                <option value="TRY"> TRICHY</option>
+                <option value="TVM">TRIVANDRUM</option>
+                <option value="VSP">VISAKHAPATNAM</option>
+                
+              </select>
+              </font></b></td>
+            <td height="2" nowrap="nowrap" width="15%"> <div align="right"> <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">District</font><font size="2"><font color="#ff0000">*</font></font></font><font size="2"> 
+                </font></div></td>
+            <td height="2"><font size="2"> 
+              <select name="DIST" class="combo" tabindex="2">
+                <option value="">Select District</option>
+                
+              </select>
+              </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="24" nowrap="nowrap"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Service 
+                Desired</font><font size="2"><font color="#ff0000">*</font></font> 
+                <font color="#81460c"> </font> </font></div></td>
+            <td colspan="3" height="24"><b><font size="2"> 
+              <select name="SERVICE" class="combo" tabindex="3" onblur="checkit()">
+                <option value="Select">Select Service</option>
+                
+                <option value="11"> Fresh Passport </option>
+                
+                <option value="14"> New Passport in lieu of Damaged/Lost Passport </option>
+                
+                <option value="10"> Passport for Children upto 15 Years of Age </option>
+                
+                <option value="12"> Re-issue of Passport / Additional Booklet </option>
+                
+              </select>
+              </font></b> </td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="20"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Surname</font> 
+                </font></div></td>
+            <td colspan="3" height="20" valign="top"><font size="2"> 
+              <input name="SURNAME" tabindex="4" class="textBoxDashed" size="33" maxlength="36" onkeyup="chkdata(6)" type="text">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="20"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">First 
+                Name</font><font size="2"><font color="#ff0000">*</font></font>&nbsp;</font></div></td>
+            <td colspan="3" height="20"><font size="2"> 
+              <input name="APPLNAME" tabindex="5" class="textBoxDashed" size="33" maxlength="37" onkeyup="chkdata(7)" type="text">
+              <font color="#000000" size="2">(Names should be in full. Initials 
+              and titles such as Mr, Mrs, Dr etc. are not allowed)</font></font> 
+            </td>
+          </tr>
+          <tr bgcolor="#f0e7dd"> 
+            <td colspan="4" height="26"> <strong> <font color="#ff6600">&nbsp;&nbsp;</font><font color="#ff6600">&nbsp;<font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#990000" size="2">if 
+              you</font></b></font></font> <font color="#990000"><b><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">have 
+              ever changed your name click the box </font></font></b></font><font color="#ff6600"> 
+              <input name="CHNAME" value="checkbox1" tabindex="7" class="checkBGnone" onclick="change(document.OnlineForm)" type="checkbox">
+              </font><font color="#990000"><b><font face="Verdana, Arial, Helvetica, sans-serif"><font size="2">and 
+              indicate Previous Name(s) in full </font></font></b></font><b><font face="Verdana, Arial, Helvetica, sans-serif"><font color="#ff6600"> 
+              &nbsp;</font></font></b><font color="#ff6600">&nbsp;</font><b><font face="Arial, Helvetica, sans-serif" size="2"><font color="#000000"> 
+              </font></font></b></strong> </td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td bgcolor="#f0e7dd" height="4"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Previous 
+                Name</font><font color="#81460c"> &nbsp;</font></font></div></td>
+            <td colspan="3" bgcolor="#f0e7dd" height="4"><font size="2"> 
+              <input name="PRVNAME" disabled="true" class="textBoxDashed12" tabindex="7" size="33" maxlength="50" onkeyup="chkdata(9)" type="text">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="19"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Sex</font><font size="2"><font color="#ff0000">*&nbsp;</font></font></div></td>
+            <td height="19" width="29%"><font size="2"> 
+              <select name="APPLSEX" tabindex="8" class="combo">
+                <option value="Select">Select Sex</option>
+                <option value="M">MALE</option>
+                <option value="F">FEMALE</option>
+                <option value="X">OTHERS</option>
+              </select>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+              </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2">&nbsp;</font></td>
+            <td height="19" width="15%"><div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">&nbsp;Date 
+                of</font><font color="#000000"> Birth</font><font size="2"><font color="#ff0000">*</font></font></font></div></td>
+            <td height="19"><b><font size="2"> 
+              <input name="APPLDOB" tabindex="9" class="textBoxDashed" onfocus="javascript:vDateType='3'" onblur="DateFormat(this,this.value,event,true,'3')" onkeyup="DateFormat(this,this.value,event,false,'3')" size="13" maxlength="10" type="text">
+              </font></b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#81460c"><font color="#0000ff" size="1">(DD/MM/YYYY)</font></font></font><font color="#0000ff" size="1">&nbsp; 
+              </font><font color="#0000ff"><b><font size="2"> </font></b></font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="13"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Place 
+                of Birth</font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font size="2"><font color="#ff0000">*&nbsp;</font></font></font></font></font></div></td>
+            <td height="13" width="29%"><b><font size="2"> 
+              <input name="PLACBRTH" class="textBoxDashed" tabindex="10" size="33" maxlength="50" onkeyup="chkdata(12)" type="text">
+              </font></b></td>
+            <td height="13" width="15%"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                District OR Country</font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font size="2"><font color="#ff0000">*</font></font></font><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"></font><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                </font></div></td>
+            <td height="13"> <input name="BRTHDIST" class="textBoxDashed" tabindex="11" size="33" maxlength="50" onfocus="popUp(event,'t1')" onblur="popUp(event,'t1')" onkeyup="chkdata(13)" type="text"> 
+              <div id="t1" class="tip">If Born in India,write name of the District.Otherwise 
+                write Name of Country Of birth</div></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td bgcolor="#ebebeb" height="11"> <div align="right"> <font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Qualification</font><font color="#000000">&nbsp;</font>&nbsp;<font size="2"> 
+                </font></div></td>
+            <td bgcolor="#ebebeb" height="11" width="29%"> <div align="left"><font size="2"> 
+                </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font size="2"> 
+                <input name="EDUQ" class="textBoxDashed" tabindex="12" size="33" maxlength="20" onfocus="popUp(event,'t3')" onblur="popUp(event,'t3')" onkeyup="chkdata(14)" type="text">
+                <div id="t3" class="tip">Write NIL if You Are Uneducated </div>
+                </font></b></font></font></div></td>
+            <td align="right" bgcolor="#ebebeb" height="11" width="15%"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font size="2"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Profession</font>&nbsp;<font color="#ff0000">&nbsp;</font></font></font></td>
+            <td height="11"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font size="2"> 
+              <input name="PROF" class="textBoxDashed" tabindex="13" size="33" maxlength="20" onfocus="popUp(event,'t4')" onblur="popUp(event,'t4')" onkeyup="chkdata(15)" type="text">
+              <div id="t4" class="tip">Employee Of Govt and PSU should write GOVT 
+                SERVICE/PSU SERVICE ,Others Should Write their Profession ,if 
+                Any </div>
+              </font></b></font></font></b></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td bgcolor="#ebebeb" height="15"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Visible 
+                Mark</font><font size="2"><font color="#ff0000">*</font></font> 
+                </font></div></td>
+            <td height="15" width="29%"><b><font size="2"> 
+              <input name="IMARK" class="textBoxDashed" tabindex="14" size="33" maxlength="35" onfocus="popUp(event,'t2')" onblur="popUp(event,'t2')" onkeyup="chkdata(16)" type="text">
+              </font></b> <div id="t2" class="tip">If you don't have any visible 
+                mark write NIL in textbox</div></td>
+            <td height="15" nowrap="nowrap" width="15%"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Height&nbsp;(cms)</font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font size="2"><font color="#ff0000">*</font></font></font><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2">&nbsp;</font></div></td>
+            <td height="15"> <font size="2"><b><font size="2"><b><font size="2"> 
+              <input name="HIGHT" class="textBoxDashed" tabindex="15" size="4" maxlength="3" onkeyup="chkdata(17)" type="text">
+              </font></b></font></b>&nbsp; </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="26"> <div align="right"><b><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong><font color="#000000">Present 
+                Address</font></strong></font><font size="2"><font color="#ff0000">*</font></font> 
+                <font face="Verdana, Arial, Helvetica, sans-serif" size="2"></font></b></div></td>
+            <td colspan="2" height="26"> <div align="left"><b>(At Least First 
+                Two Address Lines are to be filled)</b></div></td>
+            <td height="26"><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong><font color="#000000">Permanent 
+              Address</font></strong></font><font size="2"><font color="#ff0000">*</font></font> 
+            </td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="16"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">&nbsp;</font></b></td>
+            <td height="16" width="29%"><b><font size="2"> 
+              <input name="PRESADD1" class="textBoxDashed" tabindex="16" size="33" maxlength="35" onkeyup="chkdata(18)" type="text">
+              </font></b></td>
+            <td height="16" width="15%"><b>&nbsp;</b></td>
+            <td height="16"><font size="2"> 
+              <input name="PERMADD1" class="textBoxDashed" tabindex="19" size="33" maxlength="35" onkeyup="chkdata(19)" type="text">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="7"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"></font></b></td>
+            <td height="7" width="29%"><b><font size="2"> 
+              <input name="PRESADD2" class="textBoxDashed" size="33" tabindex="17" maxlength="35" onkeyup="chkdata(20)" type="text">
+              </font></b></td>
+            <td height="7" width="15%"><b>&nbsp;</b></td>
+            <td height="7"><font size="2"> 
+              <input name="PERMADD2" class="textBoxDashed" tabindex="20" size="33" maxlength="35" onkeyup="chkdata(21)" type="text">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="11"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">&nbsp;</font></b></td>
+            <td height="11" width="29%"><b><font size="2"> 
+              <input name="PRESADD3" class="textBoxDashed" tabindex="18" size="33" maxlength="35" onkeyup="chkdata(22)" type="text">
+              </font></b></td>
+            <td height="11" width="15%"><b>&nbsp;</b></td>
+            <td height="11"><font size="2"> 
+              <input name="PERMADD3" class="textBoxDashed" tabindex="21" size="33" maxlength="35" onkeyup="chkdata(23)" type="text">
+              </font></td>
+          </tr>
+          <tr bgcolor="#f0e7dd"> 
+            <td colspan="4" height="20"> <div align="left"><font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#990000" size="2">&nbsp;&nbsp;</font></b></font><b><font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#990000" size="2"><!--&nbsp;If 
+                your Permanent address is same as the Present address, click on 
+                this box &nbsp;</font></b></font><b><font size="2" color="#990000" face="Arial, Helvetica, sans-serif">&nbsp;</font><font size="2" color="#000000" face="Arial, Helvetica, sans-serif">&nbsp;</font></b><b><font size="2" face="Verdana, Arial, Helvetica, sans-serif"> 
+                <input type="checkbox" name="copyadd" value="checkbox" tabindex="22" class="checkBGnone" onClick="CopyAddress()" >
+                &nbsp;&nbsp;&nbsp; &nbsp;</font><font size="2">&nbsp;</font></b><font size="2" face="Verdana, Arial, Helvetica, sans-serif">&nbsp;</font><font size="2">&nbsp;</font></b><font size="2" color="#CC3333"> 
+                </font></div>--></font></b></font></b></div></td>
+          </tr>
+          <tr align="center" bgcolor="#ebebeb" valign="middle"> 
+            <td colspan="3" height="21"> <div align="right"><font color="#ff6600" face="Verdana, Arial, Helvetica, sans-serif" size="2"><font size="2"><font size="2"><font color="#ff6600" face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000" face="Arial, Helvetica, sans-serif">Please 
+                give the Date since residing at the Present&nbsp;Address</font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font size="2"><font color="#ff0000">*</font></font></font></font></font></font><b><font size="2"><b><font size="2"><font color="#ff6600" face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000" face="Arial, Helvetica, sans-serif" size="2"> 
+                </font></font> </font></b></font></b></font> </div></td>
+            <td height="21"> <div align="left"><font color="#ff6600" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font size="2"><b><font color="#ff6600" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font size="2"><b><font size="2"> 
+                <input name="RESDATE" class="textBoxDashed" tabindex="23" onfocus="javascript:vDateType='3'" onblur="DateFormat(this,this.value,event,true,'3')" onkeyup="DateFormat(this,this.value,event,false,'3')" size="13" maxlength="10" type="text">
+                </font></b></font></b></font></b></font></b><font size="2"><font color="#ff6600" face="Verdana, Arial, Helvetica, sans-serif" size="2"><font size="2"><font size="2"><font color="#0000ff" face="Verdana, Arial, Helvetica, sans-serif" size="2"><font size="1">(DD/MM/YYYY)</font></font></font></font></font><font size="2"> 
+                </font></font></font></div></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="21"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Phone 
+                No</font><font color="#000000">&nbsp;</font></div></td>
+            <td height="21" width="29%"><font size="2"> 
+              <input name="PHONENO" class="textBoxDashed" tabindex="24" size="15" maxlength="15" onkeyup="chkdata(25)" type="text">
+              </font></td>
+            <td height="21" valign="middle" width="15%"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Mobile 
+                No</font>&nbsp;&nbsp;</div></td>
+            <td height="21" valign="middle"><font size="2"> 
+              <input name="MOBILENO" class="textBoxDashed" id="MOBILENO" tabindex="25" size="15" maxlength="15" onkeyup="chkdata(26)" type="text">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="19"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Email 
+                Address</font>&nbsp;</div></td>
+            <td height="19" width="29%"><font size="2"> 
+              <input name="EMAIL" class="TEXTBOXDASHED1" tabindex="26" size="27" maxlength="30" onkeyup="chkdata(27)" type="text">
+              </font></td>
+            <td height="19" valign="middle" width="15%">&nbsp;</td>
+            <td height="19" valign="middle">&nbsp;</td>
+          </tr>
+          <tr bgcolor="#f0e7dd"> 
+            <td colspan="4" height="15">&nbsp;&nbsp;<font face="Arial, Helvetica, sans-serif" size="2"><font color="#ff6600"><font color="#cccccc"><font color="#990000" face="Verdana, Arial, Helvetica, sans-serif"><b>&nbsp;Applicant's 
+              Family Information   </b> </font><font color="#000033" size="2"><b>( All Names should be in full (including surname if any). Initials and titles are not allowed)</b></font><b></b></font></font></font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="27"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Marital&nbsp;Status</font><font size="2"><font color="#ff0000">*&nbsp;</font></font></font></div></td>
+            <td height="27"><b><font size="2"> 
+              <select name="MRTLSTATUS" class="checkbox" tabindex="27" onchange="showSpouse()">
+                <option value="Select">Select Marital Status</option>
+                <option value="M">Married</option>
+                <option value="S">Single</option>
+                <option value="W">Widow/Widower 
+                </option><option value="D">Divorcee</option>
+              </select>
+              </font></b></td>
+            <td height="27"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Spouse's&nbsp;Name</font></td>
+            <td height="27"><font size="2"> 
+              <input name="SPOUSENAME" class="textBoxDashed12" tabindex="28" size="33" maxlength="75" disabled="false" onkeyup="chkdata(29)" type="text">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="27"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Father's 
+                Name</font><font size="2"><font color="#ff0000">*</font></font></font></div></td>
+            <td colspan="3" height="27"><font size="2"> 
+              <input name="FTHRNAME" class="textBoxDashed" tabindex="29" size="50" maxlength="75" onkeyup="chkdata(30)" type="text"> </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="27" nowrap="nowrap"> <div align="right"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Mother's 
+                Name</font><font size="2"><font color="#ff0000">*</font></font> 
+                </font></div></td>
+            <td colspan="3" height="27"><font size="2"> 
+              <input name="MTHRNAME" class="textBoxDashed" tabindex="30" size="50" maxlength="75" onkeyup="chkdata(31)" type="text">
+              </font> </td>
+          </tr>
+          <tr bordercolor="#CCCCCC" bgcolor="#f0e7dd"> 
+            <td colspan="4" height="45"> <div align="justify"><font color="#ff6600" face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                &nbsp;</font></b></strong></font><font color="#ff6600" face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000033">&nbsp;</font></font></b></strong></font><font color="#990000" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>If 
+                you are not residing at the Present Address for the last one year, 
+                click on this box </b></font><font color="#ff6600" face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                <input name="LASTADD" value="checkbox" tabindex="31" class="checkBGnone" onclick="CHECKADD(document.OnlineForm)" type="checkbox">
+                </font></b></strong></font><font color="#990000" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b>and 
+                furnish addresses of the other place(s) of residence in the last 
+                one year along with the duration(s) </b></font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font color="#990000">of 
+                living there.&nbsp;</font></b></font><font face="Verdana, Arial, Helvetica, sans-serif"><b><font color="#990000">&nbsp;&nbsp;&nbsp;&nbsp;</font></b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="24"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">From</font>&nbsp;</div></td>
+            <td height="24" width="29%"><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font size="2"> 
+              <select name="select1" disabled="true" tabindex="32" class="combo">
+                <option value="select">Select Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <select name="select2" disabled="true" tabindex="33" class="combo">
+                <option value="select">Select Year</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+              </select>
+              </font></b></font></td>
+            <td height="24" valign="middle" width="15%"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">From</font> 
+              </div></td>
+            <td height="24" valign="middle"><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font size="2"> 
+              <select name="select3" disabled="true" tabindex="39" class="combo">
+                <option value="select">Select Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <select name="select4" disabled="true" tabindex="39" class="combo">
+                <option value="select">Select Year</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+              </select>
+              </font></b></font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="17"> <div align="right"><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2">&nbsp;<font color="#000000">To</font></font></b><font color="#000000">&nbsp;&nbsp;</font>&nbsp;<b><font size="2"> 
+                </font></b> </font></div></td>
+            <td height="17" width="29%"><b><font size="2"> </font><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font size="2"> 
+              <select name="select5" disabled="true" tabindex="34" class="combo">
+                <option value="select">Select Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <select name="select6" disabled="true" tabindex="35" class="combo">
+                <option value="select">Select Year</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+              </select>
+              </font></b> </font></b></td>
+            <td height="17" valign="middle" width="15%"> <div align="right"><font color="#000000">&nbsp;<b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">To&nbsp;</font></b></font>&nbsp;&nbsp;<font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2">&nbsp;<b><font size="2"> 
+                </font></b> </font></div></td>
+            <td height="17" valign="middle"><b><font size="2"> </font><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"><b><font size="2"> 
+              <select name="select7" disabled="true" tabindex="39" class="combo">
+                <option value="select">Select Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <select name="select8" disabled="true" tabindex="40" class="combo">
+                <option value="select">Select Year</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+              </select>
+              </font></b> </font></b></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td> <div align="right"><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                <font color="#000000">Address 1 </font>&nbsp;&nbsp;</font></div></td>
+            <td height="2" width="29%"><b><font size="2"> 
+              <input name="PRVADD1" class="textBoxDashed" disabled="true" size="33" tabindex="36" maxlength="35" onkeyup="chkdata(41)" type="text">
+              </font></b></td>
+            <td height="2" valign="middle" width="15%"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Address 
+                2</font><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                &nbsp;</font>&nbsp;&nbsp;</div></td>
+            <td height="2" valign="middle"><b><font size="2"> 
+              <input name="PRVADD11" tabindex="41" class="textBoxDashed" disabled="true" size="33" maxlength="35" onkeyup="chkdata(42)" type="text">
+              </font></b></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="2">&nbsp;</td>
+            <td height="2" width="29%"><b><font size="2"> 
+              <input name="PRVADD2" disabled="true" tabindex="37" class="textBoxDashed" size="33" maxlength="35" onkeyup="chkdata(43)" type="text">
+              </font></b></td>
+            <td height="2" valign="middle" width="15%">&nbsp;</td>
+            <td height="2" valign="middle"><b><font size="2"> 
+              <input name="PRVADD12" class="textBoxDashed" tabindex="42" disabled="true" size="33" maxlength="35" onkeyup="chkdata(44)" type="text">
+              </font></b></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="2">&nbsp;</td>
+            <td bgcolor="#ebebeb" height="2" width="29%"><b><font size="2"> 
+              <input name="PRVADD3" tabindex="38" class="textBoxDashed" disabled="true" size="33" maxlength="35" onkeyup="chkdata(45)" type="text">
+              </font></b></td>
+            <td height="2" valign="middle" width="15%">&nbsp;</td>
+            <td height="2" valign="middle"><b><font size="2"> 
+              <input name="PRVADD13" class="textBoxDashed" tabindex="43" disabled="true" size="33" maxlength="35" onkeyup="chkdata(46)" type="text">
+              </font></b></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td colspan="4" height="2">&nbsp;</td>
+          </tr>
+          <tr bgcolor="#f0e7dd"> 
+            <td colspan="4" height="2"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#ffff99" face="Arial, Helvetica, sans-serif"><strong><font color="#990000" face="Verdana, Arial, Helvetica, sans-serif">&nbsp;&nbsp;</font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#ffff99" face="Arial, Helvetica, sans-serif"><strong><font color="#990000" face="Verdana, Arial, Helvetica, sans-serif">&nbsp;&nbsp;If 
+              you have a Demand Draft, click on this box<b><font face="Verdana, Arial, Helvetica, sans-serif" size="2">&nbsp; 
+              <input name="pmntmode" class="checkBGnone" id="pmntmode" tabindex="44" onclick="pmnt(document.OnlineForm)" type="checkbox">
+              and fill the details below:</font></b></font></strong></font></font></strong></font></font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td bgcolor="#ebebeb" height="25"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">DD 
+                No</font><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                &nbsp;</font></div></td>
+            <td height="25" width="29%"><font size="2"><b><font size="2"><b><font size="2"> <b> 
+              <font size="2"><b><font size="2"> 
+              <input name="DDNO" class="textBoxDashed" tabindex="45" size="12" maxlength="10" disabled="false" onkeyup="chkdata(48)" type="text">
+              </font></b><font size="2"></font></font></b></font></b></font></b></font></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="20"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">DD 
+                Date</font><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                </font>&nbsp;</div></td>
+            <td height="20" width="29%"><font size="2"> <b><font size="2"> 
+              <input name="DDDATE" class="textBoxDashed" tabindex="46" onfocus="javascript:vDateType='3'" onblur="DateFormat(this,this.value,event,true,'3')" onkeyup="DateFormat(this,this.value,event,false,'3')" size="13" maxlength="10" disabled="false" type="text">
+              </font></b><font size="2"><font color="#0000ff"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font size="1">(DD/MM/YYYY)</font></font></font><font size="1">&nbsp; 
+              </font></font></font></td>
+            <td height="20" nowrap="nowrap" width="15%"> <div align="right"> <font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#000000">Bank 
+                Name</font></font><font size="2"> </font></div></td>
+            <td height="20"><font size="2"> 
+              <select name="BANKCODE" tabindex="47" class="combo" disabled="false">
+                <option value="1">State Bank of India</option>
+                <option value="2">Overseas bank of India</option>
+                <option value="3">Punjab National Bank</option>
+                <option value="4">Corporation  Bank</option>
+                <option value="5">Punjab and Sindh Bank</option>
+                <option value="5">Canara Bank</option>
+                <option value="5">Vijaya Bank</option>
+                <option value="5">HDFC Bank</option>
+                <option value="5">ICICI Bank</option>
+                <option value="6">Others</option>
+              </select>
+              </font></td>
+          </tr>
+          <tr bgcolor="#f0e7dd"> 
+            <td colspan="4" height="4"> <div align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#990000"><b>&nbsp;</b></font><font color="#990000"><b>If 
+                you have held a passport</b></font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#ffff99" face="Arial, Helvetica, sans-serif"><strong><font color="#990000" face="Verdana, Arial, Helvetica, sans-serif"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#ffff99" face="Arial, Helvetica, sans-serif"><strong><font color="#990000" face="Verdana, Arial, Helvetica, sans-serif"><b><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                or hold a passport at present, click on this box</font></b></font></strong></font> 
+                <input name="oldpassport" class="checkBGnone" id="oldpassport" tabindex="48" onclick="oldPassport(document.OnlineForm)" type="checkbox">
+                and fill the details below:</font></b></font></strong></font></font></font></div></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="2"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Old/Existing 
+                Passport No</font></div></td>
+            <td height="2" width="29%"><font size="2"> 
+              <input name="OLDPPTNO" tabindex="49" class="textBoxDashed" size="12" maxlength="10" disabled="false" onkeyup="chkdata(52)" type="text">
+              </font> </td>
+            <td height="2" width="15%"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Issue 
+                Date</font><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2">&nbsp;&nbsp;</font></div></td>
+            <td height="2"><font size="2"><font size="2"><font size="1"> 
+              <input name="OLDPPTISSUDATE" tabindex="50" class="textBoxDashed" size="13" maxlength="10" onfocus="javascript:vDateType='3'" onkeyup="DateFormat(this,this.value,event,false,'3')" onblur="DateFormat(this,this.value,event,true,'3')" disabled="false" type="text">
+              </font></font></font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#81460c"><font color="#0033ff" size="1">(DD/MM/YYYY)</font></font></font><font size="1">&nbsp; 
+              &nbsp; </font> </td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="2"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">Place 
+                of Issue</font></div></td>
+            <td height="2" width="29%"><font size="2"> 
+              <input name="OLDISSUPLAC" tabindex="51" class="textBoxDashed" size="15" maxlength="15" disabled="false" onkeyup="chkdata(54)" type="text">
+              </font></td>
+            <td height="2" width="15%"> <div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2">File 
+                Number&nbsp; </font></div></td>
+            <td height="2"><font size="2"> 
+              <input name="OLDFILENO" tabindex="52" class="textBoxDashed" id="OLDFILENO" size="12" maxlength="12" disabled="false" onkeyup="chkdata(55)" type="text">
+              </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td height="2"><div align="right"><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif" size="2"> 
+                Date Of Expiry</font><font color="#81460c" face="Verdana, Arial, Helvetica, sans-serif" size="2"></font></div></td>
+            <td height="2"><font size="2"><font size="2"><font size="1"> 
+              <input name="OLDPPTEXPIRY" tabindex="53" class="textBoxDashed" size="13" maxlength="10" onfocus="javascript:vDateType='3'" onkeyup="DateFormat(this,this.value,event,false,'3')" onblur="DateFormat(this,this.value,event,true,'3')" disabled="false" type="text">
+              </font><font size="2"><font size="2"><font size="1"> </font></font></font><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><font color="#81460c"><font color="#0033ff" size="1">(DD/MM/YYYY)</font></font></font><font size="1">&nbsp; 
+              </font><font size="1"> </font></font></font></td>
+            <td colspan="2" height="2"><font size="2">&nbsp; </font></td>
+          </tr>
+          <tr bgcolor="#ebebeb"> 
+            <td colspan="2" height="23"> <div align="right">&nbsp; 
+                <input name="Submit" value="Save" class="LoginButton" type="submit">
+              </div></td>
+            <td colspan="2" height="23"> <div align="left"> 
+                <input name="Submit22" value="Re-Print Form" class="LoginButton" onclick="javascript:location='PPT_DupApplForm.jsp'" type="reset">
+              </div></td>
+          </tr>
+        </tbody></table>
+        &nbsp;&nbsp; 
+        <div align="center"></div>
+        <div align="left"></div>
+        <div align="center"></div>
+      </td>
+      <td height="1012" width="9%">&nbsp;</td>
+    </tr>
+    <tr> 
+      <td height="2" width="0%">&nbsp;</td>
+      <td height="2" width="91%">&nbsp;</td>
+      <td height="2" width="9%">&nbsp;</td>
+    </tr>
+		
+  </tbody></table>
+</form>
+</body></html>

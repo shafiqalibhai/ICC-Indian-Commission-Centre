@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+	<name>CustomQuickIcons</name>
+	<creationDate>2009.01.03</creationDate>
+	<author>mic / http://www.joomaax.com</author>
+	<copyright>(C) 2006/7/8/9 mic. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>info@joomx.com</authorEmail>
+	<authorUrl>http://joomlacode.org/gf/project/joomx/</authorUrl>
+	<version>2.1.3</version>
+	<description>
+		<![CDATA[
+	    	<div style="font-weight:normal">
+	    		<div>
+		    		<strong>CQI - CustomQuickIcons</strong> replaces the standard quickicon module with several options
+		    	</div>
+		    	<div>
+		    		If you find CQI useful, please consider supporting us by donating, rating or reviewing this extension at the
+		    		<a href="http://extensions.joomla.org/component/option,com_mtree/task,viewlink/link_id,463/Itemid,35/" target="_blank">Joomla! Extensions Directory.</a>
+		    	</div>
+		    </div>
+    	]]>
+	</description>
+
+	<files folder="site">
+		<filename>index.html</filename>
+	</files>
+
+	<administration>
+		<menu img="components/com_customquickicons/images/jsd_16_16.png" link="option=com_customquickicons">CQI - QuickIcons</menu>
+
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB/en-GB.com_customquickicons.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_customquickicons.menu.ini</language>
+			<language tag="de-DE">de-DE/de-DE.com_customquickicons.ini</language>
+			<language tag="de-DE">de-DE/de-DE.com_customquickicons.menu.ini</language>
+		</languages>
+
+		<files folder="admin">
+			<folder>help</folder>
+			<folder>images</folder>
+			<folder>install</folder>
+			<folder>modules</folder>
+
+			<filename>index.html</filename>
+      	    <filename>admin.customquickicons.php</filename>
+            <filename>admin.customquickicons.html.php</filename>
+            <filename>toolbar.customquickicons.php</filename>
+            <filename>toolbar.customquickicons.html.php</filename>
+            <filename>customquickicons.class.php</filename>
+		</files>
+	</administration>
+
+	<installfile>install/install.customquickicons.php</installfile>
+	<uninstallfile>install/uninstall.customquickicons.php</uninstallfile>
+</install>

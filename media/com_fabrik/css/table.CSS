@@ -1,0 +1,33 @@
+.notempty{
+	background: transparent url(../images/required.png) no-repeat top right;
+}
+
+.addbutton {
+	background: transparent url(../images/add.png) no-repeat left;
+	padding: 2px 5px 0 20px;
+}
+
+.feedButton {
+	background: transparent url(../images/feed.png) no-repeat left;
+	padding: 2px 5px 0 20px;
+}
+
+.csvExportButton {
+	background: transparent url(../images/csv-export.png) no-repeat left;
+	padding: 2px 5px 0 20px;
+}
+
+.csvImportButton {
+	background: transparent url(../images/csv-import.png) no-repeat left;
+	padding: 2px 5px 0 20px;
+}
+
+.fabrikTable a.fabrikorder-desc {
+	background: transparent url(../images/orderdesc.png) no-repeat right;
+	padding-right: 9px;
+}
+
+.fabrikTable a.fabrikorder-asc {
+	background: transparent url(../images/orderasc.png) no-repeat right;
+	padding-right: 9px;
+}

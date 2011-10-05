@@ -1,0 +1,45 @@
+<?xml version="1.0" standalone="yes" ?>
+<install type="etb_plugin" version="1.5.0">
+<!-- NOTE : -type- is EasyToolbar2 Plugin -version- is Joomla version  -->
+
+	<name>EasyBook2</name>
+	<creationDate>01-Jan-2008</creationDate>
+	<author>Nikolai Plath (elkuku)</author>
+	<authorEmail>easy@easy-joomla.org</authorEmail>
+	<authorUrl>www.easy-joomla.org</authorUrl>
+	<copyright>YOUR COPYRIGHT</copyright>
+	<license>YOUR LICENSE</license>
+	<version>YOUR VERSION</version>
+	<description>YOUR DESCRIPTION</description>
+
+	<!-- Required Fields -->
+	<default_icon>easybook_ico.png</default_icon>
+	<default_icon_alt>Easybook 2</default_icon_alt>
+	<icon_fixed>1</icon_fixed>
+
+	<!-- Files Section -->
+
+	<!-- Plugin -->
+	<files>
+		<filename>plg_easybook.php</filename>
+		<filename>plg_easybook.xml</filename>
+	</files>
+
+	<!-- Icons -->
+	<custom_icons>
+		<filename>easybook_ico.png</filename>
+	</custom_icons>
+
+	<!-- Languages -->
+	<languages>
+		<language tag="en-GB">en-GB.plg_easybook.ini</language>
+		<language tag="de-DE">de-DE.plg_easybook.ini</language>
+		<language tag="es-ES">es-ES.plg_easybook.ini</language>
+	</languages>
+
+	<!-- Optional Parameters -->
+
+	<params>
+	</params>
+
+</install>

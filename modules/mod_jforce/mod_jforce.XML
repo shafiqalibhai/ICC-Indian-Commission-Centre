@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>JForce Module</name>
+	<author>Extreme Joomla</author>
+	<creationDate>February 2009</creationDate>
+	<copyright>Copyright (C) 2009 Extreme Joomla. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>sales@extremejoomla.com</authorEmail>
+	<authorUrl>www.extremejoomla.com</authorUrl>
+	<version>2.0</version>
+	<files>
+		<filename module="mod_jforce">mod_jforce.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<filename>tmpl/default.php</filename>
+		<filename>tmpl/index.html</filename>
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="" />
+	</params>
+</install>

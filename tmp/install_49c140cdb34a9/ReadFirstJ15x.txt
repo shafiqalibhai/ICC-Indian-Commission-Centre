@@ -1,0 +1,21 @@
+Hello
+This is the install package for joomla 1.5.x. 
+Here you will find the component and some modules to integrate a google calendar 
+into a joomla based web site.
+
+***** INSTALLATION *****
+To install extract the component and your desired modules and install them 
+with the joomla installer.
+
+***** UPGRADE *****
+You must have installed a previous version of the gcalendar component or the modules.
+Extract the component or module folder to your joomla root folder. E.g. if you want to
+upgrade mod_gcalendar version 1.5.1 to this version extract the content of the folder
+mod_gcalendar to your joomla root. 
+
+***** DOCUMENTATION *****
+Check http://gcalendar.allon.ch for the documentation, forum and current issues. 
+
+
+Have fun
+the gcalendar team

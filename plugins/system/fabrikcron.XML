@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="system">
+	<name>System - Fabrik Sheduled Tasks</name>
+	<author>Pollen 8</author>
+	<creationDate>Aug 2008</creationDate>
+	<copyright>Copyright (C) 2005 - 2008 Pollen 8 Design Ltd. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>rob@pollen-8.co.uk</authorEmail>
+	<authorUrl>www.pollen-8.co.uk</authorUrl>
+	<version>1.5</version>
+	<description>Runs Fabrik scheduled tasks</description>
+	<files>
+		<filename plugin="fabrikcron">fabrikcron.php</filename>
+	</files>
+	<params>
+	</params>
+</install>

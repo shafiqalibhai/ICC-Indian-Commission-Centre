@@ -1,0 +1,145 @@
+.fabrikForm .fabrikGroup ul{
+	list-style:none;
+}
+
+.fabrikForm .fabrikGroup ul, .fabrikForm .fabrikGroup li{
+	padding:0;
+	margin:0;
+}
+
+
+.fabrikForm .fabrikGroup li{
+	padding:5px 10px;
+	margin-top:10px;
+	background:none;
+}
+
+.fabrikActions{
+	padding-top:15px;
+	clear:left;
+	padding-bottom:15px;
+}
+
+.fabrikError, .fabrikNotice, .fabrikValidating, .fabrikSuccess{
+	margin: 0; 
+	font-weight: bold; 
+	margin-bottom: 10px; 
+	padding:7px 40px 7px 40px;
+}
+
+.fabrikError{
+	color: #c00; 
+	background: #EFE7B8 url(../images/alert.png) no-repeat right 7px !important;
+	border-top: 3px solid #F0DC7E; 
+	border-bottom: 3px solid #F0DC7E;
+}
+
+.fabrikMainError{
+	background: #EFE7B8 url(../images/alert.png) no-repeat left center !important;
+	padding-left:40px;
+}
+
+.fabrikElement{
+	margin-right: 200px;
+}
+
+.fabrikLabel{
+	/*ensures label text doesnt overrun validation icons*/
+	padding-right:10px;  
+}
+
+.fabrikElementContainer{
+	position:relative;
+}
+
+.fabrikErrorMessage{
+	padding-right: 20px;
+	top: 3px;
+	right: 0pt;
+	position: absolute;
+}
+
+.fabrikValidating{
+	color: #476767; 
+	background: #EFFFFF url(../images/ajax-loader.gif) no-repeat right 7px !important;
+	border-top: 3px solid #A5EFEF; 
+	border-bottom: 3px solid #A5EFEF;	
+}
+
+.fabrikSuccess{
+	color: #598F5B;
+	background: #DFFFE0 url(../images/action_check.png) no-repeat right 7px !important;
+	border-top: 3px solid #AFFFB2; 
+	border-bottom: 3px solid #AFFFB2;	
+}
+
+.fabrikNotice{
+	color: #009FBF; 
+	background: #DFFDFF url(../images/alert.png) no-repeat center left !important;
+	border-top: 3px solid #009FBF; 
+	border-bottom: 3px solid #009FBF;
+}
+
+.fabrikHide{
+	display:none;
+}
+
+.fabrikShow{
+	display:block;
+}
+
+.notempty{
+	background: transparent url(../images/required.png) no-repeat top right;
+}
+
+.isemail{
+	background: transparent url(../images/email.gif) no-repeat top right;
+}
+
+.isalphanumeric{
+	background: transparent url(../images/alphanumeric.png) no-repeat top right;
+}
+
+/*** slide out add option 
+section for dropdowns radio buttons etc**/
+
+.addoption dl{
+	display:inline;
+	width:75%;
+}
+.addoption{
+	clear:left;
+	padding:8px;
+	margin:3px 0;
+	background-color:#efefef;
+}
+
+a.toggle-addoption{
+	padding-left:10px;
+}
+
+/*** end slide out add option section **/
+
+
+.inputbox:focus{
+	background-color:#ffffcc;
+	border:1px solid #aaaaaa;
+}
+
+.addoption dd, .addoption dt{
+	padding:2px;
+	display:inline;
+}
+
+.fabrikSubGroup{
+	clear:both;
+}
+
+.fabrikSubGroupElements{
+	width:80%;
+	float:left;
+}
+
+.geo{
+	visibility:hidden;
+}

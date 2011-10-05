@@ -1,0 +1,55 @@
+<?php
+class JConfig {
+	var $offline = '0';
+	var $editor = 'tinymce';
+	var $list_limit = '100';
+	var $helpurl = '';
+	var $debug = '0';
+	var $debug_lang = '0';
+	var $sef = '0';
+	var $sef_rewrite = '0';
+	var $sef_suffix = '0';
+	var $feed_limit = '100';
+	var $secret = '4NBDDXOOPUPLaCwy';
+	var $gzip = '1';
+	var $error_reporting = '-1';
+	var $xmlrpc_server = '0';
+	var $log_path = 'C:\\xampp\\htdocs\\icc2\\logs';
+	var $tmp_path = 'C:\\xampp\\htdocs\\icc2\\tmp';
+	var $live_site = '';
+	var $force_ssl = '0';
+	var $offset = '0';
+	var $caching = '0';
+	var $cachetime = '150';
+	var $cache_handler = 'file';
+	var $memcache_settings = array();
+	var $ftp_enable = '0';
+	var $ftp_host = '127.0.0.1';
+	var $ftp_port = '21';
+	var $ftp_user = 'admin';
+	var $ftp_pass = 'admin';
+	var $ftp_root = '';
+	var $dbtype = 'mysql';
+	var $host = 'localhost';
+	var $user = 'root';
+	var $db = 'icc2';
+	var $dbprefix = 'icc2_';
+	var $mailer = 'mail';
+	var $mailfrom = 'mohinsona@gmail.com';
+	var $fromname = 'ICC';
+	var $sendmail = '/usr/sbin/sendmail';
+	var $smtpauth = '0';
+	var $smtpuser = '';
+	var $smtppass = '';
+	var $smtphost = 'localhost';
+	var $MetaAuthor = '1';
+	var $MetaTitle = '1';
+	var $lifetime = '150';
+	var $session_handler = 'database';
+	var $password = '';
+	var $sitename = 'ICC';
+	var $MetaDesc = 'Solution For Every Official Identity Application';
+	var $MetaKeys = 'Solution For Every Official Identity Application';
+	var $offline_message = 'This site is down for maintenance. Please check back again soon.';
+}
+?>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.5" type="fabrikplugin" group="visualization">
+	<name>googlemap</name>
+	<author>Rob Clayburn</author>
+	<creationDate>Sept 2007</creationDate>
+	<copyright>(C) 2005-2006 fabrikar.com</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>rob@pollen-8.co.uk</authorEmail>
+	<authorUrl>www.fabrikar.com</authorUrl>
+	<version>1.0.0</version>
+	<description>Show a google map</description>
+	<files>
+		<filename fabrikplugin="googlemap">googlemap.php</filename>
+		<filename>index.html</filename>
+		<filename>googlemap.js</filename>
+		<filename>tmpl/default/default.php</filename>
+	</files>
+	
+	<administration>
+	  <languages folder="administrator/language" >
+			<language tag="en-GB">en-GB/en-GB.com_fabrik.plg.visualization.fabrikgooglemap.ini</language>
+		</languages>
+	</administration>
+	
+	<params group="connection" addpath="/administrator/components/com_fabrik/elements">
+		<param name="googlemap_connection" type="connections" label="Connection"  description="CONNECTIONONLYFABRIKTABLES"/>
+	</params>
+	
+	<params repeatcontrols="1" repeat="1" addpath="/administrator/components/com_fabrik/elements">
+		<param name="googlemap_table" observe="googlemap_connection" type="fabriktables" label="table"/>
+		<param name="fb_gm_detailtemplate" type="textarea" default="" rows="8" cols="40" label="FBGMDETAILTEMPLATE" description="FBGMDETAILTEMPLATEDDESC" />
+		<param name="fb_gm_iconimage" type="imagelist" default="" hide_none="1" directory="/images/stories" label="ICON" description="ICONDESC" />
+		<param name="fb_gm_iconimage2"  type="element" connection="googlemap_connection" table="googlemap_table" label="DATAICON" description="DATAICONDESC" />
+		<param name="fb_gm_icon_letter" size="1" type="text" default="" label="ICONLETTER" description="ICONLETTERDESC" />
+	</params>
+	
+	<params group="rest" repeat="0">
+		<param name="fb_gm_key" type="text" size="30" default="" label="FBGMGOOGLEMAPKEY" description="FBGMGOOGLEMAPKEYDESC"/>
+		<param name="fb_gm_maptype" type="list" default="G_NORMAL_MAP" label="MAPTYPE">
+			<option value="G_NORMAL_MAP">Normal</option>
+			<option value="G_SATELLITE_MAP">Satelite</option>
+			<option value="G_HYBRID_MAP">Hybrid</option>
+		</param>
+		<param name="fb_gm_zoomlevel" type="text" size="3" default="4" label="FBGMZOOMLEVEL" description="FBGMZOOMLEVELDESC"/>
+		<param name="fb_gm_center" type="radio" default="middle" label="FBGMCENTERON">
+			<option value="middle">MIDDLE</option>
+			<option value="lastmarker">LAST MARKER</option>
+		</param>
+		<param name="fb_gm_mapwidth" type="text" size="3" default="600" label="FBGMMAPWIDTH" description=""/>
+		<param name="fb_gm_mapheight" type="text" size="3" default="300" label="FBGMMAPHEIGHT" description=""/>
+		<param name="fb_gm_mapcontrol" type="list" default="" label="FBGMMAPCONTROL" description="FBGMMAPCONTROLDESC">
+			<option value="">None</option>
+			<option value="GLargeMapControl">Large map control</option>
+			<option value="GSmallMapControl">Small map control</option>
+			<option value="GSmallZoomControl">Small zoom control</option>
+		</param>
+
+		<param name="fb_gm_scalecontrol" type="radio" default="0" label="FBGMSCALECONTROL" description="FBGMSCALECONTROLDESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="fb_gm_maptypecontrol" type="radio" default="0" label="FBGMMAPTYPECONTROL" description="FBGMMAPTYPECONTROLDESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="fb_gm_overviewcontrol" type="radio" default="0" label="FBGMOVERVIEWCONTROL" description="FBGMOVERVIEWCONTROLDESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="fb_gm_layout" label="template" type="folderlist" directory="/components/com_fabrik/plugins/visualization/googlemap/views/googlemap/tmpl/" />
+		<param name="fb_gm_ajax_refresh" type="radio" default="0" label="FBGMAJAXREFRESH" description="FBGMAJAXREFRESHDESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+	
+		<params group="clustering">
+		<param name="fb_gm_clustering" type="radio" default="0" label="FBGMCLUSTERINGON" description="FBGMCLUSTERINGONDESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="fb_gm_cluster_splits" type="text" size="10" default="10,50" label="FBGMCLUSTERSPLIT" description="FBGMCLUSTERSPLITDESC"/>
+		<param name="fb_gm_cluster_icon_increment" type="text" size="3" default="5" label="FBGMCLUSTERICONINCREMENT" description="FBGMCLUSTERICONINCREMENTDESC" />
+	</params>
+</install>

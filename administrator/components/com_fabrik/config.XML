@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params>
+		<param name="fbConf_wysiwyg_label" menu="hide" type="radio" default="0" label="Use WYSIWYG editor for element labels" description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="fbConf_alter_existing_db_cols" menu="hide" type="radio" default="1" label="Alter field types" description="DEPRECAITED - USE TABLE'S OWN SETTINGS FOR THIS FEATURE. If no selected then fabrik will not alter database table field types, when saving elements. If yes selected then fabrik will update your database table structure to assure maximum compatibility">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="remove_tables_on_unistall" menu="hide" type="radio" default="1" label="Remove tables on uninstall" description="drop tables that contain data collected by fabrik when unistalling fabrik">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="usefabrik_mootools" type="radio" default="0" label="Mootools version" description="If 1.2 selected then fabrik will attempt to replace Joomla's version of mootools with the latest mootools version - note this may stop other modules from working on fabrik pages. If none selected then we don't load mootools at all - only choose this option if your Joomla template manually includes mootools">
+			<option value="-1">None</option>
+			<option value="0">1.1</option>
+			<option value="1">1.2</option>
+		</param>
+		<param name="use_mediabox" type="radio" default="0" label="Use mediabox instead of slimbox (supports Flash, but requires Fabrik mootools)">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="merge_js" type="radio" default="0" label="Merged JS files" description="If yes selected then fabrik will take all individual js files required for a page and merge them into one longer JS file. This has the advantage of speeding up page load times, but may need to be turned off when developing">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="compress_js" type="list" default="none" label="Compress merged JS file" description="If you decided to merge the JS files you can also decide if you want to compress them. WARNING: Currently the packer method creates an unusable JS file, its option is here for testing as it produces higher compression rates">
+			<option value="none">None</option>
+			<option value="jsmin">JS Min</option>
+			<option value="packer">Dean Edwards packer</option>
+		</param>
+		<param name="spoofcheck_on_formsubmission" type="radio" default="1" label="Spoof check on form submission" description="If yes selected then fabrik will use Joomla's spoof check functionality when processing forms. Turn off if you want to post data via a URL">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="use_wip" menu="hide" type="radio" default="0" label="Use Works-in-Progress" description="Enable or disable any features in Fabrik which are still considered 'works in progress'.  Although WiP code shouldn't cause errors, you should only enable this settings if there is some WiP you need">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</config>

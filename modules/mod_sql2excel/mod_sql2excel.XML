@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/module-install.dtd">
+<install type="module" group="" version="1.5.0">
+	<name>SQL 2 Excel Module</name>
+	<creationDate>Mar 12 2009</creationDate>
+	<author>Joomla-R-Us</author>
+	<authorEmail>info@Joomla-R-Us.com</authorEmail>
+	<authorUrl>http://Joomla-R-Us.com</authorUrl>
+	<copyright>Joomla-R-Us</copyright>
+	<license>GNU/GPL</license>
+	<version>0.9.3</version>
+	<description><![CDATA[<h1>SQL 2 Excel by Joomla-R-Us</h1><p>This module displays download links from the SQL 2 Excel Component. Make sure you install the SQL 2 Excel Component as well.</p><p> Please refer to <a href="http://Joomla-R-Us.com">http://Joomla-R-Us.com</a> for more information.]]></description>
+	<!-- Main File Copy Section -->
+	<files>
+		<filename module="mod_sql2excel">index.html</filename>
+		<filename module="mod_sql2excel">mod_sql2excel.php</filename>
+		<filename module="mod_sql2excel">mod_sql2excel.xml</filename>
+		<filename module="mod_sql2excel">assets/index.html</filename>
+		<filename module="mod_sql2excel">tmpl/default.php</filename>
+		<filename module="mod_sql2excel">tmpl/index.html</filename>
+	</files>
+
+	<!-- Language -->
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_sql2excel.ini</language>
+	</languages>
+
+	<!-- Only Development - copy ./front, ./language, ./other to admin area -->
+	<files>
+		<filename>language/en-GB/en-GB.mod_sql2excel.ini</filename>
+		<filename>other/install_xml.php</filename>
+	</files>
+	
+	<params>	
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+
+		<param name="listclass" type="text" default="" label="List Class" description="LIST_CLASS_DESCR" />
+						
+		<param name="display_sections" default="" size="10" type="text" label="Include Sections" description="INCLUDE_SEC_DESCR" />
+
+		<param name="hide_sections" default="" size="10" type="text" label="Hide Sections" description="HIDE_SECTIONS_DESC" />
+		
+		<param name="display_categories" default="" size="10" type="text" label="Include Categories" description="INCLUDE_CAT_DESCR" />
+
+		<param name="hide_categories" default="" size="10" type="text" label="Hide Categories" description="HIDE_CAT_DESCR" />
+
+		<param name="sort_by" type="list" default="a.created" label="Sort By" description="Sort the list by">
+		  	<option value="a.created">Date Created</option>
+		  	<option value="a.count">Download Count</option>
+		  	<option value="a.link_title">Link Title</option>
+		</param>
+
+		<param name="sort_order" type="list" default="DESC" label="Sort Order" description="Sort Order">
+		  	<option value="DESC">DESC</option>
+		  	<option value="ASC">ASC</option>
+		</param>
+		
+		<param name="number_to_show" default="5" size="3" type="text" label="Number to show" description="NUMBER_TO_SHOW_DWESCR" />
+
+		
+		<param name="showdate" type="list" default="0" label="Show Date" description="SHOW_DATE_DESCR">
+		  	<option value="1">Yes</option>
+		  	<option value="0">No</option>
+		</param>
+
+		<param name="dateformat" type="list" default="0" label="Date Format" description="DATE_FORMAT_DESCR">
+		  	<option value="m/d/y">MM/DD/YY</option>
+		  	<option value="n/j/y">M/D/YY</option>
+		  	<option value="m/d/Y">MM/DD/YYYY</option>
+		  	<option value="n/j/Y">M/D/YYYY</option>
+		  	<option value="m/d">MM/DD</option>
+		  	<option value="n/j">M/D</option>
+			<option value="d/m">DD/MM</option>
+			<option value="j/n">D/M</option>		  	
+		  	<option value="y-m-d">YY-MM-DD</option>
+		  	<option value="Y-m-d">YYYY-MM-DD</option>
+		  	<option value="M j">MON_D</option>
+		  	<option value="M j Y">MON_D_YYYY</option>
+		</param>
+		
+		<param name="showdownloads" type="list" default="0" label="Show Downloads" description="SHOW_DL_DESCR">
+		  	<option value="1">Yes</option>
+		  	<option value="0">No</option>
+		</param>
+				
+		
+		<param name="maxlen" default="40" size="3" type="text" label="Max length" description="MAX_LEN_DESCR" />
+
+		<param name="preview" type="list" default="0" label="Preview" description="PREVIEW_DESCR">
+		  	<option value="0">No</option>
+		  	<option value="popup">POPUPNT</option>
+		  	<option value="popupwt">POPUPWT</option>
+		  	<option value="inline">INLINENT</option>
+		  	<option value="inlinewt">INLINEWT</option>
+		</param>
+	</params>
+
+</install>

@@ -1,0 +1,112 @@
+/*------------------------------------------------------------------------
+# JA Sargas 1.0 - Nov, 2006
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2006 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+-------------------------------------------------------------------------*/
+
+/* Script Dropline Menu
+--------------------------------------------------------- */
+#jasdl-mainnav {
+	margin-top: 5px;
+}
+
+#jasdl-mainnav ul, #jasdl-subnav ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#jasdl-mainnav ul li, #jasdl-subnav ul li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+	background: none;
+}
+
+#jasdl-mainnav a {
+	float: left;
+	padding: 0 15px;
+	text-decoration: none;
+	text-align: center;
+	line-height: 31px;
+	height: 31px;
+	display: block;
+}
+
+#jasdl-mainnav a span {
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#jasdl-mainnav a span {float: none;}
+/* End IE5-Mac hack */
+
+#jasdl-mainnav a:hover span {
+}
+
+#jasdl-mainnav a:hover, #jasdl-mainnav ul li.hover a {
+	background: url(../images/mainnav-on-bg.gif) no-repeat bottom center #83C7DA;
+}
+
+#jasdl-mainnav a:hover span, #jasdl-mainnav ul li.hover a span {
+}
+
+#jasdl-mainnav li.active a,
+#jasdl-mainnav li.active a:hover,
+#jasdl-mainnav li.active a:active,
+#jasdl-mainnav li.active a:focus {
+	background: url(../images/mainnav-on-bg.gif) no-repeat bottom center #BBC790;
+}
+
+#jasdl-mainnav li.active a span,
+#jasdl-mainnav li.active a:hover span,
+#jasdl-mainnav li.active a:active span,
+#jasdl-mainnav li.active a:focus span {
+	color: #FFFFFF;
+}
+
+#jasdl-mainnav ul li.havechild {
+}
+
+#jasdl-mainnav ul li.havechild-active {
+}
+
+#jasdl-subnav {
+	clear: both;
+	margin-top: 5px;
+	padding-left: 5px;
+	float: left;
+}
+
+#jasdl-subnav a {
+	padding: 0 10px;
+	text-decoration: none;
+	text-transform: none;
+	font-weight: normal;
+	background: url(img/subnav-sep.gif) no-repeat center right;
+	color: #6B6B6B;
+}
+
+#jasdl-subnav a:hover,
+#jasdl-subnav a:active,
+#jasdl-subnav a:focus {
+	text-decoration: none;
+}
+
+#jasdl-subnav ul {
+	display: none;
+}
+
+#jasdl-subnav ul li {
+	display: inline;
+}
+
+#jasdl-subnav ul li.active a {
+	font-weight: bold;
+}
+
+#jasdl-subnav ul li.spacer {
+	visibility: hidden;
+}

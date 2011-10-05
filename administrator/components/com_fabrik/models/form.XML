@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<name>Form Edit Form</name>
+	<params addpath="/administrator/components/com_fabrik/elements">
+		<param name="state" type="radio" default="0" label="Published">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="created_by" type="author" default="" label="AUTHOR" description="AUTHORDESC" />
+		<param name="created_by_alias" type="text" size="20" default="" label="AUTHOR ALIAS" description="AUTHOR ALIASDESC" />
+		<param name="created" type="calendar" default="" label="CREATE DATE" />
+		<param name="publish_up" type="calendar" default="" label="START PUBLISHING"  />
+		<param name="publish_down" type="calendar" default="" label="FINISH PUBLSHING" />
+	</params>
+	
+	<params group="buttons">
+		<param name="reset_button" type="radio" default="0" label="RESETBUTTON">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="reset_button_label" type="text" default="Reset" label="RESETBUTTONLABEL" description="RESETBUTTONLABELDESC" />
+		<param name="copy_button" type="radio" default="0" label="COPYBUTTON" description="COPYBUTTONDESC">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="copy_button_label" type="text" default="Save as a copy" label="COPYBUTTONLABEL" description="COPYBUTTONLABELDESC" />
+		<param name="goback_button" type="radio" default="0" label="GO BACK BUTTON" description="">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="goback_button_label" type="text" default="Go back" label="GO BACK BUTTON LABEL" description="" />
+	</params>
+	
+	<params group="options">
+		<param name="pdf" type="list" default="" label="PDFICON" description="PDFICONDESC">
+			<option value="">Use Global</option>
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="print" type="list" default="" label="PRINTICON" description="PRINTICONDESC">
+			<option value="">Use Global</option>
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+		<param name="email" type="list" default="" label="EMAILICON" description="EMAILICONDESC">
+			<option value="">Use Global</option>
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+	</params>
+	
+	<params group="notes">
+		<param type="textarea" rows="3" cols="40" name="note" label="NOTE" descripton="NOTEDESC" />
+	</params>
+	
+	<params group="processing">
+		<param name="ajax_validations" type="radio" default="0" label="AJAXVALIDATIONS" description="AJAXVALIDATIONSDESC">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+
+</form>

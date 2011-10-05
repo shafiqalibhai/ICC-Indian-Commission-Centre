@@ -1,0 +1,112 @@
+body#bd {
+	background: url(../../images/orange/body-bg.gif) repeat-x top #FFFFFF;
+}
+
+#ja-headerwrap {
+	background: url(../../images/orange/header-bg.jpg) no-repeat top left;
+}
+
+#ja-usertools div.search {
+	background: url(../../images/orange/icon-search.gif) no-repeat center left;
+}
+
+#ja-usertools .inputbox {
+	border-color: #E09B35;
+	background: #F0CE9A;
+}
+
+/* Split Menu
+----------------------------------------------------------- */
+#ja-splitmenu a:hover,
+#ja-splitmenu a:active,
+#ja-splitmenu a:focus {
+	background: url(../../images/orange/mainnav-on-bg.gif) no-repeat bottom center #F3CFA0!important;
+}
+
+#ja-splitmenu li.active_menu a,
+#ja-splitmenu li.active_menu a:hover,
+#ja-splitmenu li.active_menu a:active,
+#ja-splitmenu li.active_menu a:focus {
+	background: url(../../images/orange/mainnav-on-bg.gif) no-repeat bottom center #66ACC7!important;
+}
+
+/* Son of Suckerfish Dropdowns
+--------------------------------------------------------- */
+#ja-cssmenu li ul {
+	border-color: #E9B261!important;
+	background: url(../../ja_cssmenu/img/child-bg-orange.gif) top #ECBC77!important;
+}
+
+#ja-cssmenu li a:hover {
+	background: #E9B261!important;
+}
+
+#ja-cssmenu li a.active {
+	background: #66ACC7!important;
+}
+
+#ja-cssmenu li li a.active {
+	background: url(../../ja_cssmenu/img/childactive-bg-orange.gif) no-repeat top left!important;
+}
+
+#ja-cssmenu li:hover,
+#ja-cssmenu li.sfhover {
+	background: #E9B261!important;
+}
+
+#ja-cssmenu li li a:hover,
+#ja-cssmenu ul li:hover, #ja-cssmenu ul ul li:hover,
+#ja-cssmenu ul li.sfhover, #ja-cssmenu ul ul li.sfhover {
+	background: url(../../ja_cssmenu/img/childhover-bg-orange.gif) #66ACC7!important;
+}
+
+/* TransMenu
+-------------------------------------------------*/
+.transMenu .background {
+	background-color: #E09B35!important;
+}
+
+.transMenu .item.hover {
+	background: #E09B35!important;
+}
+
+.transMenu .item#active, .transMenu .item#active:hover {
+	background: #66ACC7!important;
+}
+
+a.havechild-mainlevel-active-trans,
+a.havechild-mainlevel-active-trans:active {
+	background: #66ACC7!important;
+}
+
+a.jahover {
+	background: #E9B261!important;
+}
+
+a.jahover-active {
+	background: #66ACC7!important;
+}
+
+a.mainlevel-trans:hover,
+a.mainlevel-trans:active {
+	background: #E9B261!important;
+}
+
+a.mainlevel-active-trans,
+a.mainlevel-active-trans:hover,
+a.mainlevel-active-trans:active {
+	background: #66ACC7!important;
+}
+
+/* Script Dropline Menu
+--------------------------------------------------------- */
+#jasdl-mainnav a:hover, #jasdl-mainnav ul li.hover a {
+	background: url(../../images/orange/mainnav-on-bg.gif) no-repeat bottom center #F3CFA0!important;
+}
+
+#jasdl-mainnav li.active a,
+#jasdl-mainnav li.active a:hover,
+#jasdl-mainnav li.active a:active,
+#jasdl-mainnav li.active a:focus {
+	background: url(../../images/orange/mainnav-on-bg.gif) no-repeat bottom center #66ACC7!important;
+}

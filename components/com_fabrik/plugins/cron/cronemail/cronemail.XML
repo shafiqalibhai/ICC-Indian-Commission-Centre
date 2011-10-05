@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.5" type="fabrikplugin" group="cron">
+	<name>Cron Email</name>
+	<author>Rob Clayburn</author>
+	<creationDate>July 2008</creationDate>
+	<copyright>(C) 2005-2008 fabrikar.com</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>rob@pollen-8.co.uk</authorEmail>
+	<authorUrl>www.fabrikar.com</authorUrl>
+	<version>2.0</version>
+	<description>Cron email</description>
+	<files>
+		<filename fabrikplugin="cronemail">cronemail.php</filename>
+		<filename>index.html</filename>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.com_fabrik.plg.cron.cronemail.ini</language>
+	</languages>
+	
+	<params repeat="1" repeatcontrols="0">
+		<param name="cronemail-eval" default="0" type="radio" label="eval">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="to" type="text" default="" size="30" label="TO" description="CRONEMAILTODESC" />
+		<param name="subject" type="text" default="" size="30" label="SUBJECT" description="" />
+		<param name="message" type="textarea" default="" rows="8" cols="60" label="MESSAGE" description="CRONEMAILMESSAGEDESC" />
+	</params>
+	<params group="update" addpath="/administrator/components/com_fabrik/elements">
+		<param name="cronemail-updatefield" type="element" connection="connection" table="table" label="field" />
+		<param name="cronemail-updatefield-value" type="text" label="value" />
+	</params>
+</install>
